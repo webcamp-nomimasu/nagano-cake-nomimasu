@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'genres/index'
+  get 'genres/create'
+  get 'genres/edit'
+  get 'genres/update'
+  get 'customers/index'
+  get 'customers/show'
+  get 'customers/edit'
+  get 'customers/update'
   devise_for :admins
   devise_for :customers
 # devise_for :customers, controllers: {
