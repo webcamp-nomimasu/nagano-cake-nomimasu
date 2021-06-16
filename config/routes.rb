@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'orders/show'
+  get 'orders/update'
+  get 'items/index'
+  get 'items/new'
+  get 'items/create'
+  get 'items/show'
+  get 'items/edit'
+  get 'items/update'
   devise_for :admins
   devise_for :customers
 # devise_for :customers, controllers: {
