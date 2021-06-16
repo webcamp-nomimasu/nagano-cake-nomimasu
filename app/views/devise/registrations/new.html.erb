@@ -27,7 +27,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_given_name).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "メールアドレス" %>
     <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", class: "form-control" %>
@@ -35,7 +35,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "郵便番号(ハイフンなし)" %>
     <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "form-control" %>
@@ -43,7 +43,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:postal_code).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "住所" %>
     <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
@@ -51,7 +51,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "電話番号（ハイフンなし）" %>
     <%= f.text_field :phone_number, autofocus: true, placeholder: "0000000000", class: "form-control" %>
@@ -59,7 +59,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:phone_number).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "パスワード（6文字以上）" %>
     <%= f.password_field :password, autofocus: true, class: "form-control" %>
@@ -67,7 +67,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
     <% end %>
   </div>
-  
+
   <div class="form-group">
     <%= f.label "パスワード（確認用）" %>
     <%= f.password_field :password_confirmation, autofocus: true, class: "form-control" %>
@@ -75,7 +75,7 @@
       <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
     <% end %>
   </div>
-  
+
   <div class="actions">
     <%= f.submit "新規登録", class: "btn btn-primary w-100" %>
   </div>
