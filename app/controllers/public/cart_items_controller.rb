@@ -11,8 +11,8 @@ class Public::CartItemsController < ApplicationController
     if cart_item.amount != nil
       @cart_items.each do |cart_item|
         if cart_item.item_id == @cart_item.item_id
-          add_amount = cart_item.amount + @cart_item.amount
-          cart_item.update(:amount, add_amount)
+          change_amount = cart_item.amount + @cart_item.amount
+          cart_item.update(:amount, change_amount)
           @cart_item.delete
         end
       end
@@ -29,18 +29,22 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_items = CartItems.where(customer_id: current_customer.id)
     @cart_item.update(cart_item_params)
-    redirect_to customer_cart_items_path
+    redirect_to cart_items_path
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_items = current_customer.cart_items
     @cart_item.destroy
+    flash[:alert] = "#{@cart_item.item.name}を削除しました。"
+    redirect_to cart_items_path
   end
 
   def destroy_all
     CartItem.where(customer_id: current_customer.id).destroy_all
     @cart_items = current_customer.cart_items
+    flash[:alert] = "カートの商品をすべて削除しました。"
+    redirect_to cart_items_path
   end
 
   private

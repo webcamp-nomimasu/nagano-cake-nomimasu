@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="row" style="margin-left: 0; margin-right: 0;">
-      <h4 class="d-inline" style="margin-bottom: 0;">ショッピングカート</h3>
-      <%= link_to "カートを空にする", customer_cart_item_all_destroy_path, method: :delete, class: "btn btn-danger d-inline", "data-confirm" => "カート内のすべての商品を削除しますか？"  %>
+      <h4 class="d-inline" style="margin-bottom: 0;">ショッピングカート</h4>
+      <%= link_to "カートを空にする", customer_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger d-inline", "data-confirm" => "カート内のすべての商品を削除しますか？"  %>
     </div>
     <div class="cart-items-index">
-      <table>
+      <table class="table table-bordered border-dark">
         <thead>
           <tr>
             <th>商品名</th>
@@ -16,25 +16,40 @@
           </tr>
         </thead>
         <tbody>
+          <% @total_price = 0 %>
           <% @cart_items.each do |cart_item| %>
+            <% tax_price = cart_item.item.price * 1.1 %>
             <tr>
               <td><%= cart_item.item.name %></td>
-              <td><%= (cart_item.item.price * 1.1).to_s(:delimited) %></td>
-              <td></td>
-              <td></td>
+              <td><%= tax_price.to_s(:delimited) %></td>
+              <td>
+                <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true do |f| %>
+                  <%= f.select :amount, [*(1..10)] %>
+                  <%= f.submit "変更", class: "btn btn-success" %>
+                <% end %>
+              </td>
+              <td>
+                <% sum_price = cart_item.item.price * cart_item.amount * 1.1 %>
+                <%= sum_price.to_s(:delimited) %>
+              </td>
               <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger", "data-confirm" => "#{cart_item.item.name}を削除してもよろしいですか？" %></td>
             </tr>
+            <% @total_price += sum_price %>
           <% end %>
         </tbody>
       </table>
     </div>
 
     <div>
-      <!--買い物を続ける-->
-
-      <!--<table>-->
-        <!--合計金額-->
-      <!--</table>-->
+      <%= link_to "買い物を続ける", items_path, class: "btn btn-primary" %>
+      <table class="table table-bordered border-dark">
+        <tbody>
+          <tr>
+            <td class="border border-dark table-active">合計金額</td>
+            <td class="border border-dark"><%= @total_price.to_s(:delimited) %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
