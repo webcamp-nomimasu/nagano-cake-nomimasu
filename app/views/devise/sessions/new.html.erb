@@ -1,6 +1,6 @@
 <h2>Log in</h2>
 
-<%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
+<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
 
   <div class="form-group">
     <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", class: "form-control", autocomplete: "email" %>
