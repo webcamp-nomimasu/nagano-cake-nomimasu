@@ -29,7 +29,7 @@ devise_for :customers
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
-    passwards: 'admins/passwards'
+    passwords: 'admins/passwords'
   }
 
   namespace :admin do
@@ -41,4 +41,5 @@ devise_for :customers
       resources :order_items, only: [:update]
     end
   end
+
 end
