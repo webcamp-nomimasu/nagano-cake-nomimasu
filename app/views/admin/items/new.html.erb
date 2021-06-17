@@ -6,12 +6,12 @@
 
 <%= form_with model: [:admin, @item], local:true do |f| %>
   <div class="row d-flex justify-content-center">
-
+    <%= render 'items/error_message, object: @item %>
     <div class="col-md-8 justify-content-center">
       <div class="form-group form-inline pl-3">
         <div>商品画像</div>
         <div class="ml-5 pl-3"><%= f.attachment_field :image %></div>
-       </div>
+      </div>
 
 
       <div class="form-group form-inline">
