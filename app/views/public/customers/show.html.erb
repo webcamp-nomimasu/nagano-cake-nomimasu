@@ -1,0 +1,16 @@
+<div class="row">
+<h1>マイページ</h1>
+
+<p>登録情報</p>
+
+
+<table class="customer-table col-12">
+<tr><th class="col-5">氏名</th><td class="col-5"><%= @customer.family_name %><%= @customer.given_name %></td></tr>
+<tr><th class="col-5">カナ</th><td class="col-5"><%= @customer.kana_family_name %><%= @customer.kana_given_name %></td></tr>
+<tr><th class="col-5">郵便番号</th><td class="col-5"><%= @customer.postal_code %></td></tr>
+<tr><th class="col-5">住所</th><td class="col-5"><%= @customer.address %></td></tr>
+<tr><th class="col-5">電話番号</th><td class="col-5"><%= @customer.phone_number %></td></tr>
+<tr><th class="col-8">メールアドレス</th><td class="col-5"><%= @customer.email %></td></tr>
+</table>
+
+</div>
