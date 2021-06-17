@@ -1,1 +1,32 @@
 
+
+      <tbody>
+        <% @customers.each do |customer| %>
+          <tr>
+            <td class="col">
+              <%= customer.id %>
+            </td>
+            <td class="col">
+              <%= link_to admin_customer_path(customer), class: "btn-link" do %>
+                <%= customer.family_name%>
+                <%= customer.given_name%>
+              <% end %>
+            </td>
+            <td class="col">
+              <%= customer.email %>
+            </td>
+            <td class="col">
+              <% if customer.is_deleted == true%>
+                <p class="text-secondary">退会</p>
+              <% else %>
+                <p class="text-success">有効</p>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+    <div><%= paginate(@customers) %></div>
+</div>
+
