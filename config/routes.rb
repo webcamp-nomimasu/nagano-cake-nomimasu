@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+
   # ========= 管理者(admin)のルーティング ================
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
       resources :order_items, only: [:update]
     end
   end
+
 
 
 # devise_for :customers, controllers: {
@@ -49,22 +51,6 @@ Rails.application.routes.draw do
 #     patch 'customers/withdraw' => 'customers#withdraw'
 #   end
 
-#   # ========= 管理者(admin)のルーティング ================
-#   devise_for :admin, controllers: {
-#     sessions: 'admin/sessions',
-#     registrations: 'admin/registrations',
-#     passwards: 'admin/passwards'
-#   }
-
-#   namespace :admin do
-#     get '/' => 'homes#top', as: 'top'
-#     resources :customers, only: [:index, :show, :edit, :update]
-#     resources :genres, only: [:index, :create, :edit, :update]
-#     resources :items, only: [:index, :new, :create, :show, :edit, :update]
-#     resources :orders, only: [:show, :update] do
-#       resources :order_items, only: [:update]
-#     end
-#   end
-
+ 
 
 end

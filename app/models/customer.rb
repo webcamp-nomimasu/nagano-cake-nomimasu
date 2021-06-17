@@ -7,4 +7,12 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
+        
+  validates :family_name,  presence: true
+  validates :given_name, presence: true
+  validates :kana_family_name, presence: true
+  validates :kana_given_name, presence: true
+  validates :address, presence: true
+  validates :postal_code, presence: true
+  validates :phone_number, presence: true
 end
