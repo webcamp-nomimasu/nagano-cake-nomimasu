@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root 'homes#top'
   get 'cart_items/index'
   get 'items/index'
   get 'items/show'
