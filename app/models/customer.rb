@@ -10,9 +10,10 @@ class Customer < ApplicationRecord
         
   validates :family_name,  presence: true
   validates :given_name, presence: true
-  validates :kana_family_name, presence: true
-  validates :kana_given_name, presence: true
+  validates :kana_family_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :kana_given_name, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
   validates :address, presence: true
-  validates :postal_code, presence: true
-  validates :phone_number, presence: true
+  validates :postal_code, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+  
 end
