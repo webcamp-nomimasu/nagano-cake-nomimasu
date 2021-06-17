@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <h1>商品一覧（全<%= @items.count %>件）</h1>
+      <h2 class="d-inline">商品一覧</h2>
+      <h5 class="d-inline">（全<%= @items.count %>件）</h5>
 
-      <div class="items-all">
-        <div>
-
-        </div>
+<!--ジャンル検索等に使えるかもなので部分テンプレート-->
+      <div class="items-list">
+        <% render "index", items: @items %>
       </div>
 
     </div>
