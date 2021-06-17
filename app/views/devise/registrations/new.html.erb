@@ -6,13 +6,13 @@
         <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
 
           <div class="form-group">
-            <%= f.label "名前" %>
-            <%= f.label "（姓）"  %>
+            <%= f.label "名前", class: "col-3 mt-5" %>
+            <%= f.label "(姓)　　"  %>
             <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "col-3" %>
             <% if @customer.errors.include?(:family_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:family_name).first %>
             <% end %>
-            <%= f.label "（名）"  %>
+            <%= f.label "　(名)　　"  %>
             <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "col-3" %>
             <% if @customer.errors.include?(:given_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:given_name).first %>
@@ -20,13 +20,13 @@
           </div>
 
           <div class="form-group">
-            <%= f.label "フリガナ" %>
-            <%= f.label "（セイ）"  %>
+            <%= f.label "フリガナ", class: "col-3 mt-2"%>
+            <%= f.label "(セイ)　"  %>
             <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "col-3" %>
             <% if @customer.errors.include?(:kana_family_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_family_name).first %>
             <% end %>
-            <%= f.label "（メイ）"  %>
+            <%= f.label "　(メイ)　"  %>
             <%= f.text_field :kana_given_name, autofocus: true, placeholder: "ミチコ", class: "col-3" %>
             <% if @customer.errors.include?(:kana_given_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_given_name).first %>
@@ -34,62 +34,62 @@
           </div>
 
           <div class="form-group">
-            <%= f.label "メールアドレス" %>
-            <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", class: "form-control" %>
+            <%= f.label "メールアドレス", class: "col-4 mt-2" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", class: "col-3" %>
             <% if @customer.errors.include?(:email) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
             <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label "郵便番号(ハイフンなし)" %>
-            <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "form-control" %>
+            <%= f.label "郵便番号(ハイフンなし)", class: "col-4 mt-2" %>
+            <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "col-3" %>
             <% if @customer.errors.include?(:family_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:postal_code).first %>
             <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label "住所" %>
-            <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control" %>
+            <%= f.label "住所", class: "col-4 mt-2" %>
+            <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0", class: "col-7" %>
             <% if @customer.errors.include?(:address) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
             <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label "電話番号（ハイフンなし）" %>
-            <%= f.text_field :phone_number, autofocus: true, placeholder: "0000000000", class: "form-control" %>
+            <%= f.label "電話番号（ハイフンなし）", class: "col-4 mt-2" %>
+            <%= f.text_field :phone_number, autofocus: true, placeholder: "0000000000", class: "col-3" %>
             <% if @customer.errors.include?(:phone_number) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:phone_number).first %>
             <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label "パスワード（6文字以上）" %>
-            <%= f.password_field :password, autofocus: true, class: "form-control" %>
+            <%= f.label "パスワード（6文字以上）", class: "col-4 mt-2" %>
+            <%= f.password_field :password, autofocus: true, class: "col-3" %>
             <% if @customer.errors.include?(:password) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
             <% end %>
           </div>
 
           <div class="form-group">
-            <%= f.label "パスワード（確認用）" %>
-            <%= f.password_field :password_confirmation, autofocus: true, class: "form-control" %>
+            <%= f.label "パスワード（確認用）" , class: "col-4 mt-2"%>
+            <%= f.password_field :password_confirmation, autofocus: true, class: "col-3" %>
             <% if @customer.errors.include?(:password) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
             <% end %>
           </div>
 
-          <div class="actions">
-            <%= f.submit "新規登録", class: "btn btn-primary w-100" %>
+          <div class="actions text-center">
+            <%= f.submit "新規登録", class: "btn btn-success col-4 mt-2" %>
           </div>
           <% end %>
 
       </br></br>
 
-      <h3>既に登録済みの方</h3>
-      <%= link_to "こちら", new_customer_session_path %> からログインしてください
+      <h3 class="mb-3">既に登録済みの方</h3>
+      <%= link_to "こちら", new_customer_session_path %> からログインしてください。
 
     </div>
   </div>
