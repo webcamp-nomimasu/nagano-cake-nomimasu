@@ -31,12 +31,12 @@
           <%= f.radio_button :address_option, 2, checked: true %>
           <%= f.label :address_option, "新しいお届け先", value: 2 %>
           </br>
-          <%= f.label :postal_code, '郵便番号（ハイフンなし）', class: "col-4 mt-2" %>
-          <%= f.text_field :postal_code, placeholder: '0000000', class: "form-control-sm col-3" %></br>
-          <%= f.label :address, '住所', class: "col-4 mt-2" %>
-          <%= f.text_field :address, placeholder: '東京都渋谷区代々木神園町0-0', class: "form-control-sm col-3" %></br>
-          <%= f.label :name, '宛名', class: "col-4 mt-2" %>
-          <%= f.text_field :name, placeholder: '令和道子', class: "form-control-sm col-3" %></br></br>
+          <%= f.label :postal_code, "郵便番号（ハイフンなし）", class: "col-4 mt-2" %>
+          <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control-sm col-3" %></br>
+          <%= f.label :address, "住所", class: "col-4 mt-2" %>
+          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control-sm col-3" %></br>
+          <%= f.label :name, "宛名", class: "col-4 mt-2" %>
+          <%= f.text_field :name, placeholder: "令和道子", class: "form-control-sm col-3" %></br></br>
           <div class="actions text-center">
           <%= f.submit "確認画面へ進む", class: "btn btn-primary col-3 mt-2" %>
           </div>

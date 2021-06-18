@@ -1,33 +1,47 @@
 <div class="container pt-5 pb-5">
   <div class="row mt-5 mb-5">
     <div class="col-lg-10">
-      
-      
+
+
       <table class="table-bordered">
-      <tr><th class="table-active">商品名</th><th class="table-active">単価(税込)</th><th class="table-active">数量</th><th class="table-active">小計</th></tr>
-      
-      <% @cart_items.each do |cart| %>
-         <tr>
-            <td class=""><%= attachment_image_tag cart.item, :image, :fill, 60, 60, alt: "item-image" %>
-                         <%= cart.item.name %></td>
-            <td class=""><%=  %></td>
-                        </tr>
-      
-      
-      
-      <% end %>
-     
-      <tr><th class="table-active">郵便番号</th></tr>
-      <tr><th class="table-active">住所</th><td class="col-1"><%= @customer.address %></td></tr>
-      <tr><th class="table-active">電話番号</th><td class="col-1"><%= @customer.phone_number %></td></tr>
-      <tr><th class="table-active">メールアドレス</th><td class="col-1"><%= @customer.email %></td></tr>
+        <thead>
+          <tr>
+            <th class="table-active">商品名</th>
+            <th class="table-active">単価(税込)</th>
+            <th class="table-active">数量</th>
+            <th class="table-active">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart| %>
+            <tr>
+              <td class=""><%= attachment_image_tag cart.item, :image, :fill, 60, 60, alt: "item-image" %>
+                           <%= cart.item.name %></td>
+                             <!--floor：小数点の切り捨て、:delimitedは3桁区切り-->
+              <!--<td class=""><%#= (cart.item.price * 1.1).floor.to_s(:delimited) %></td>-->
+              <td class=""><%= cart.item.tax_included_price.floor.to_s(:delimited) %></td>
+              <td class=""><%= cart.amount %></td>
+              <td class=""><%= (@sum += cart.item.tax_included_price.floor * cart.amount).to_s(:delimited) %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
-      
-      
-      
-      
-      
-      
+</br></br>
+      <table class="table-bordered">
+        <tr><th class="table-active">送料</th><td class=""><%= @shipping_cost %></td></tr>
+        <tr><th class="table-active">商品合計</th><td class=""><%= @sum.to_s(:delimited) %></td></tr>
+        <tr><th class="table-active">請求金額</th><td class=""><%= @total_price.to_s(:delimited) %></td></tr>
+      </table>
+</br></br>
+      <h5>支払い方法</h5>
+        <%= @order.payment_method %>
+</br></br>
+      <h5>お届け先</h5>
+        〒<%= @order.postal_code %>　<%= @order.address %>　<%= @order.name %>
+
+    
+
+
     </div>
   </div>
 </div>
