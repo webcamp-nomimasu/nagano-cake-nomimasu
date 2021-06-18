@@ -1,4 +1,6 @@
 class Public::CustomersController < ApplicationController
+  # ログインしていないとmy_pageに遷移不可
+  before_action :authenticate_user!
 
   def show
     @customer = current_customer
@@ -18,9 +20,13 @@ class Public::CustomersController < ApplicationController
   end
 
   def unsubscribe
+    @customer = current_customer
   end
-  
+
   def withdraw
+    current_customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
 
