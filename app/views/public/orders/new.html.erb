@@ -26,7 +26,7 @@
           <%= f.radio_button :address_option, 1 %>
           <%= f.label :address_option, "登録済住所から選択", value: 1 %></br>
           <!--order_address：address.rbに表記 -->
-          <%= f.collection_select :address_id, @addresses, :id, :order_address, class: "form-control" %>
+          <%= f.collection_select :address_id, @addresses, :id, :order_address, { class: "form-control" } %>
           </br>
           <%= f.radio_button :address_option, 2, checked: true %>
           <%= f.label :address_option, "新しいお届け先", value: 2 %>

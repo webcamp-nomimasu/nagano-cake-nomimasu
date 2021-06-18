@@ -1,0 +1,33 @@
+<div class="container pt-5 pb-5">
+  <div class="row mt-5 mb-5">
+    <div class="col-lg-10">
+      
+      
+      <table class="table-bordered">
+      <tr><th class="table-active">商品名</th><th class="table-active">単価(税込)</th><th class="table-active">数量</th><th class="table-active">小計</th></tr>
+      
+      <% @cart_items.each do |cart| %>
+         <tr>
+            <td class=""><%= attachment_image_tag cart.item, :image, :fill, 60, 60, alt: "item-image" %>
+                         <%= cart.item.name %></td>
+            <td class=""><%=  %></td>
+                        </tr>
+      
+      
+      
+      <% end %>
+     
+      <tr><th class="table-active">郵便番号</th></tr>
+      <tr><th class="table-active">住所</th><td class="col-1"><%= @customer.address %></td></tr>
+      <tr><th class="table-active">電話番号</th><td class="col-1"><%= @customer.phone_number %></td></tr>
+      <tr><th class="table-active">メールアドレス</th><td class="col-1"><%= @customer.email %></td></tr>
+      </table>
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</div>

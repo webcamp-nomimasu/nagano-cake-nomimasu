@@ -5,4 +5,9 @@ class Public::OrdersController < ApplicationController
     @addresses = Address.where(customer: current_customer)
   end
   
+  def confirm
+    @cart_items = current_customer.cart_items
+    @order = Order.new(order.params)
+  end
+  
 end
