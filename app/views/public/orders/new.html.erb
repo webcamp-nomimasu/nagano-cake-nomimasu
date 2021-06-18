@@ -1,0 +1,7 @@
+<h2>注文情報入力</h2>
+</br></br>
+<h2>支払方法</h2>
+<%= form_with(model: , local: true) do |form| %>
+  <%= form.radio_button :gender, :male %>
+  <%= form.radio_button :gender, :female %>
+<% end %>
