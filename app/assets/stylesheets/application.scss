@@ -17,4 +17,7 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
 
-
+ .box-confirm {
+   display: flex;
+   justify-content: space-between;
+ }

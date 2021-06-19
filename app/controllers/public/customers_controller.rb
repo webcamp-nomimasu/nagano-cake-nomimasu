@@ -1,6 +1,4 @@
 class Public::CustomersController < ApplicationController
-  # ログインしていないとmy_pageに遷移不可
-  before_action :authenticate_user!
 
   def show
     @customer = current_customer

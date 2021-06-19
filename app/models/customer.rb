@@ -13,8 +13,8 @@ class Customer < ApplicationRecord
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
  # 半角数字でマッチさせるバリデーション
   NUMBER_REGEXP = /\A[0-9]+\z/
- 
- 
+
+
   validates :family_name, presence: true
   validates :given_name, presence: true
   validates :kana_family_name, presence: true, format: { with: KATAKANA_REGEXP }
@@ -23,7 +23,7 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, format: { with: NUMBER_REGEXP }
   validates :address, presence: true
   validates :phone_number, presence: true, format: { with: NUMBER_REGEXP }
- 
+
  # deviseメソッド：退会（論理削除）後のログイン
   def active_for_authentication?
     super && (self.is_deleted == false)
