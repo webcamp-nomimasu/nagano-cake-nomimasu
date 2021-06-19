@@ -1,11 +1,12 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!, except: [:show, :index]
 
   def new
     @order = Order.new
     @addresses = Address.where(customer: current_customer)
-    # if current_customer.cart_items.empty?
-    #   redirect_to cart_items_path
-    # end
+    if current_customer.cart_items.empty?
+      redirect_to cart_items_path
+    end
   end
 
   def confirm
@@ -58,9 +59,9 @@ class Public::OrdersController < ApplicationController
     @shipping_cost = 800
     @order = current_customer.order.find(params[:id])
     @order_items = @order.order.items
-    # if (@order.customer != current_customer) && @order.blank?
-    #   redirect_to root_path
-    # end
+    if (@order.customer != current_customer) && @order.blank?
+      redirect_to root_path
+    end
   end
 
   private
@@ -68,6 +69,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_price, :order_status )
   end
-
 
 end
