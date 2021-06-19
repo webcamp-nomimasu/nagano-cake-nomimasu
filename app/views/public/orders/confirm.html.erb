@@ -4,7 +4,7 @@
 
       <div class="box-confirm">
       <table class="table-bordered col-6">
-        <thead class="">
+        <thead>
           <tr>
             <th class="table-active col-3">商品名</th>
             <th class="table-active col-2">単価(税込)</th>
@@ -22,8 +22,9 @@
               <!--tax_included_price：order.rbで定義-->
               <td class="col-2">¥<%= cart.item.tax_included_price.floor.to_s(:delimited) %></td>
               <td class="col-1"><%= cart.amount %></td>
-              <td class="col-1">¥<%= (@sum += cart.item.tax_included_price.floor * cart.amount).to_s(:delimited) %></td>
+              <td class="col-1">¥<%= cart.item.tax_included_price.floor * cart.amount.to_s(:delimited) %></td>
             </tr>
+            <% @sum += cart.item.tax_included_price.floor * cart.amount %>
           <% end %>
         </tbody>
       </table>
@@ -31,7 +32,7 @@
       <table class="table-bordered col-4">
         <tr><th class="table-active col-2">送料</th><td class="col-2">¥<%= @shipping_cost %></td></tr>
         <tr><th class="table-active col-2">商品合計</th><td class="col-2">¥<%= @sum.to_s(:delimited) %></td></tr>
-        <tr><th class="table-active col-2">請求金額</th><td class="col-2">¥<%= @total_price.to_s(:delimited) %></td></tr>
+        <tr><th class="table-active col-2">請求金額</th><td class="col-2">¥<%= @sum + @shipping_cost %></td></tr>
       </table>
       </div>
 
@@ -47,7 +48,7 @@
         <%= f.hidden_field :address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
-        <%= f.hidden_field :total_price %>
+        <%= f.hidden_field :total_price, :value => (@sum + @shipping_cost) %>
         <%= f.hidden_field :shipping_cost %>
         <%= f.submit "注文を確定する", class: "btn btn-success" %>
       <% end %>
