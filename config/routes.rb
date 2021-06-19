@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-devise_for :customers
 
   scope module: :public do
     root to: 'homes#top'
@@ -24,6 +23,8 @@ devise_for :customers
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw' => 'customers#withdraw'
   end
+
+  devise_for :customers
 
   # ========= 管理者(admin)のルーティング ================
   devise_for :admins, controllers: {

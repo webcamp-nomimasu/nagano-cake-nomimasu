@@ -1,9 +1,9 @@
 <div class="container pt-5 pb-5">
   <div class="row mt-5 mb-5">
     <div class="col-lg-10">
-      <h2>新規会員登録</h2>
+      <h2>会員情報編集</h2>
 
-        <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
+        <%= form_with model: @customer, url: customers_path, local: true do |f| %>
 
           <div class="form-group">
             <%= f.label "名前", class: "col-3 mt-5" %>
@@ -65,32 +65,16 @@
             <% end %>
           </div>
 
-          <div class="form-group">
-            <%= f.label "パスワード（6文字以上）", class: "col-4 mt-2" %>
-            <%= f.password_field :password, autofocus: true, class: "form-control-sm col-3" %>
-            <% if @customer.errors.include?(:password) %>
-              <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
-            <% end %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label "パスワード（確認用）" , class: "col-4 mt-2"%>
-            <%= f.password_field :password_confirmation, autofocus: true, class: "form-control-sm col-3" %>
-            <% if @customer.errors.include?(:password) %>
-              <p style="color: red;"><%= @customer.errors.full_messages_for(:password).first %>
-            <% end %>
-          </div>
-
           <div class="actions text-center">
-            <%= f.submit "新規登録", class: "btn btn-success col-4 mt-2" %>
+            <%= f.submit "編集内容を保存", class: "btn btn-success col-4 mt-2" %>
+            <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger col-2 ml-5" %>
           </div>
 
         <% end %>
+        
+        </br></br>
 
-      </br></br>
-
-      <h3 class="mb-3">既に登録済みの方</h3>
-        <%= link_to "こちら", new_customer_session_path %> からログインしてください。
+          
 
     </div>
   </div>
