@@ -29,7 +29,7 @@
       <% if @addresses.empty? %>
         <h4>登録された配送先はありません</h4>
       <% else %>
-        <table>
+        <table class="tabel table-bordered">
           <thead>
             <tr>
               <th>郵便番号</th>
@@ -46,7 +46,7 @@
                 <td><%= address.name %></td>
                 <td>
                   <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
-                  <%= link_to "削除する", addresses_path(address, method: :delete, data:{ confirm: "本当に削除しますか？" }, class: "btn btn-danger") %>
+                  <%= link_to "削除する", address_path(address), method: :delete, data:{ confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
                 </td>
               </tr>
             <% end %>
