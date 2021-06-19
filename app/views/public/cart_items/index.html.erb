@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
+
     <div class="row" style="margin-left: 0; margin-right: 0;">
       <h4 class="d-inline" style="margin-bottom: 0;">ショッピングカート</h4>
-      <%= link_to "カートを空にする", customer_cart_items_destroy_all_path, method: :delete, class: "btn btn-danger d-inline", "data-confirm" => "カート内のすべての商品を削除しますか？"  %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, class: "btn btn-danger d-inline", "data-confirm" => "カート内のすべての商品を削除しますか？"  %>
     </div>
+
     <div class="cart-items-index">
       <table class="table table-bordered border-dark">
         <thead>
