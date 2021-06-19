@@ -1,4 +1,4 @@
-<h3><%= @customer.family_name %><%= @customer.given_name %>さんの会員情報編集</h3>
+<h2><%= @customer.family_name %><%= @customer.given_name %>さんの会員情報編集</h2>
 <table>
   <%= form_with model:@customer, url:admin_customer_path, local:true do |f| %>
     <tr>

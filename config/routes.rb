@@ -36,6 +36,8 @@ devise_for :customers
     get '/' => 'homes#top', as: 'top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    # ジャンル削除機能追加しました
+    delete 'genres/:id' => 'genres#destroy', as: 'destroy'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:show, :update] do
       resources :order_items, only: [:update]

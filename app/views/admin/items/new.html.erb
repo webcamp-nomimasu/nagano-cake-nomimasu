@@ -1,6 +1,6 @@
-<<div class="row">
+<div class="row">
   <div class="col-md-6 offset-md-2">
-    <h3 class="page-title">商品編集</h3>
+    <h3 class="page-title">商品新規登録</h3>
   </div>
 </div>
 
@@ -16,12 +16,12 @@
 
       <div class="form-group form-inline">
         <div>商品名</div>
-        <div class="ml-5 pl-3"><%= f.text_field :name, size: "30", class: "form-control" %></div>
+        <div class="ml-5 pl-3"><%= f.text_field :name, placeholder: "商品名", size: "30", class: "form-control" %></div>
       </div>
   
       <div class="form-group form-inline">
         <div>商品説明</div>
-        <div class="ml-5 pl-3"><%= f.text_area :information, size: "30x5", class: "form-control" %></div>
+        <div class="ml-5 pl-3"><%= f.text_area :information, placeholder: "ここに説明文を記述します", size: "30x5", class: "form-control" %></div>
       </div>
 
       <div class="form-group form-inline">
@@ -31,7 +31,7 @@
 
       <div class="form-group form-inline">
         <div>税抜価格</div>
-        <div class="ml-5 pl-3"><%= f.text_field :price, size: "30", class: "form-control" %> 円</div>
+        <div class="ml-5 pl-3"><%= f.text_field :price, placeholder: "1,000", size: "30", class: "form-control" %> 円</div>
         </div>
 
       <div class="form-group form-inline">
@@ -45,7 +45,7 @@
   </div>
   <div class="row d-flex justify-content-center">
     <div class="col-sm-3">
-      <%= f.submit '変更を保存' %>
+      <%= f.submit '新規登録' %>
     </div>
   </div>
 <% end %>
