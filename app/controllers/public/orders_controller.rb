@@ -3,6 +3,9 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = Address.where(customer: current_customer)
+    # if current_customer.cart_items.empty?
+    #   redirect_to cart_items_path
+    # end
   end
 
   def confirm
@@ -13,7 +16,7 @@ class Public::OrdersController < ApplicationController
     # @total_price = total_order_price
     @sum = 0
     @shipping_cost = 800
-    @total_price = @sum + @shipping_cost
+    # @total_price = @sum + @shipping_cost
     # @order.total_price = @order.shipping_cost + @total_price
     if params[:order][:address_option] == "0"
       @order.address = current_customer.address
@@ -34,18 +37,31 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
     @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart|
-      order_item = OrderItem.new
-      order_item.item_id = cart.item.id
-      order_item.order_id = @order.id
-      order_items.price = cart.item.price
-      order_items.amount = cart.amount
-      order_item.save!
-      cart.destroy_all
+    @cart_items.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.item_id = cart_item.item.id
+      @order_item.order_id = @order.id
+      @order_items.price = cart_item.item.price
+      @order_items.amount = cart_item.amount
+      @order_item.save!
+      current_customer.cart_item.destroy_all
     end
     redirect_to orders_complete_path
   end
 
+  def index
+    @orders = current_customer.orders.all
+  end
+
+  def show
+    @sum = 0
+    @shipping_cost = 800
+    @order = current_customer.order.find(params[:id])
+    @order_items = @order.order.items
+    # if (@order.customer != current_customer) && @order.blank?
+    #   redirect_to root_path
+    # end
+  end
 
   private
 

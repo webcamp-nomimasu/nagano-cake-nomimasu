@@ -1,0 +1,47 @@
+<div class="container pt-5 pb-5">
+  <div class="row mt-5 mb-5">
+    <div class="col">
+      <h2>注文履歴詳細</h2></br></br>
+        <div class="box-confirm">
+          <h5>注文情報</h5>
+            <table class="table-bordered">
+              <tr><th class="table-active">注文日</th><td class="col-1"><%= @order.created_at %></td></tr>
+              <tr><th class="table-active">配送先</th><td class="col-1">〒<%= @order.postal_code %></br><%= @order.address %></br><%= @order.name %></td></tr>
+              <tr><th class="table-active">支払方法</th><td class="col-1"><%= @order.payment_method %></td></tr>
+              <tr><th class="table-active">ステータス</th><td class="col-1"><%= @order.status %></td></tr>
+            </table>
+            <h5>請求情報</h5>
+            <table class="table-bordered">
+              <tr><th class="table-active">商品合計</th><td class="col-1">¥<%= (@order.total_price - shipping_cost).to_s(:delimited) %></td></tr>
+              <tr><th class="table-active">配送料</th><td class="col-1">¥<%= @order.shipping_cost.to_s(:delimited) %></td></tr>
+              <tr><th class="table-active">ご請求額</th><td class="col-1">¥<%= @order.total_price.to_s(:delimited) %></td></tr>
+            </table>
+          </div>
+
+            <h5>注文内容</h5>
+              <table class="table-bordered">
+              <thead>
+                <tr>
+                  <th class="table-active col-3">商品</th>
+                  <th class="table-active col-2">単価(税込)</th>
+                  <th class="table-active col-1">個数</th>
+                  <th class="table-active col-2">小計</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @order_items.each do |order_item| %>
+                  <tr>
+                    <td class="col-3"><%= order_item.name %></td>
+                    <td class="col-1">¥<%= order_item.tax_included_price.floor.to_s(:delimited) %></td>
+                    <td class="col-2"><%= order_item.amount %></td>
+                    <td class="col-2"><%= (order_item.price * order_item.amount * 1.1).floor.to_s(:delimited) %></td>
+                <% end %>
+              </tbody>
+            </table>
+
+
+
+
+     </div>
+  </div>
+</div>

@@ -20,13 +20,15 @@
         <div class="form-group">
           <%= f.radio_button :address_option, 0, checked: true %>
           <%= f.label :address_option, "ご自身の住所", value: 0 %></br>
-          &emsp;<%= "〒" + current_customer.postal_code + " " + current_customer.address %>
+          &emsp;<%= "〒" + "#{ current_customer.postal_code }" + " " + "#{ current_customer.address }" %>
           &emsp;<%= "#{ current_customer.family_name } #{ current_customer.given_name }" %>
           </br>
-          <%= f.radio_button :address_option, 1 %>
-          <%= f.label :address_option, "登録済住所から選択", value: 1 %></br>
-          <!--order_address：address.rbに表記 -->
-          <%= f.collection_select :address_id, @addresses, :id, :order_address, { class: "form-control" } %>
+          <% if @addresses != [] %>
+            <%= f.radio_button :address_option, 1 %>
+            <%= f.label :address_option, "登録済住所から選択", value: 1 %></br>
+            <!--order_address：address.rbに表記 -->
+            <%= f.collection_select :address_id, @addresses, :id, :order_address, { class: "form-control" } %>
+          <% end %>
           </br>
           <%= f.radio_button :address_option, 2, checked: true %>
           <%= f.label :address_option, "新しいお届け先", value: 2 %>
