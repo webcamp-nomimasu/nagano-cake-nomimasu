@@ -11,7 +11,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       redirect_to addresses_path  # render?
-      flash[:alert] = ""
+      flash[:alert] = "保存できませんでした"
     end
   end
 
@@ -21,7 +21,7 @@ class Public::AddressesController < ApplicationController
 
   def update
     @address = Address.find(params[:id])
-    if @address.update
+    if @address.update(address_params)
       redirect_to addresses_path
     else
       redirect_to request.referer
@@ -30,8 +30,12 @@ class Public::AddressesController < ApplicationController
 
   def destroy
     address = Address.find(params[:id])
-    address.destroy
-    redirect_to addresses_path
+    if address.destroy
+      redirect_to addresses_path
+      flash[:notice] = "削除しました"
+    else
+      redirect_to request.referer
+    end
   end
 
   private
