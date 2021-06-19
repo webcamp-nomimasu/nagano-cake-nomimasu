@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-devise_for :customers
 
   scope module: :public do
     root to: 'homes#top'
@@ -25,6 +24,8 @@ devise_for :customers
     patch 'customers/withdraw' => 'customers#withdraw'
   end
 
+  devise_for :customers
+
   # ========= 管理者(admin)のルーティング ================
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -36,6 +37,8 @@ devise_for :customers
     get '/' => 'homes#top', as: 'top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
+    # ジャンル削除機能追加しました
+    delete 'genres/:id' => 'genres#destroy', as: 'destroy'
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :orders, only: [:show, :update] do
       resources :order_items, only: [:update]

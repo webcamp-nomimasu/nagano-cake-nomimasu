@@ -2,12 +2,17 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :customer
   
-  attribute :status, :integer, default: "0"
-  enum status: {
-    waiting_payment: 0,
-    payment_confirmation: 1,
-    under_production: 2,
-    ready_shipping: 3,
-    sented: 4
-  }
+  enum payment_method: {クレジットカード:0, 銀行振込:1}
+  enum order_status: {入金待ち:0, 入金確認:1,  製作中:2, 発送準備中:3, 発送済み:4}
+  
+  def tax_included_price
+    tax = 1.1
+    price * tax
+  end
+
+  NUMBER_REGEXP = /\A[0-9]+\z/
+
+  validates :customer_id, :payment_method, :address, :name,   presence: true
+  validates :postal_code, presence: true, format: { with: NUMBER_REGEXP }
+
 end
