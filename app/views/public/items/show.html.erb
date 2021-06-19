@@ -7,9 +7,9 @@
     <div class="col-md-6">
       <h3><%= @item.name %></h3>
       <p><%= @item.information %></p>
-      <p>¥  <%= (item.price * 1.1).to_s(:delimited) %><span style="font-size: small;">(税込)</span></p>
+      <p>¥  <%= (@item.price * 1.1).to_s(:delimited) %><span style="font-size: small;">(税込)</span></p>
 
-      <%= form_with model: @cart_item, url: customer_cart_items_path, local: true do |f| %>
+      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>
         <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
         <%= f.submit "カートに入れる", class: "btn btn-success" %>
