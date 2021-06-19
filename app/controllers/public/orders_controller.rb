@@ -46,6 +46,9 @@ class Public::OrdersController < ApplicationController
     redirect_to orders_complete_path
   end
 
+  def index
+    @orders = Order.all
+  end
 
   private
 
