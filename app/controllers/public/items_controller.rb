@@ -10,8 +10,16 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+  # def Genre.search(search_word)
+  #   Genre.where(name: "search_word")
+  # end
+
   def search
-    @genre = Genre.find_by(id: params[:genre_id])
+    if params([:genre_id]).present?
+      @genre = Genre.find_by(id: params[:genre_id])
+    else
+      @genres = Genre.all
+    end
   end
 
   private
