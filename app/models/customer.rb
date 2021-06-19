@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
   validates :family_name, presence: true
   validates :given_name, presence: true
   validates :kana_family_name, presence: true, format: { with: KATAKANA_REGEXP }
-  validates :kana_family_name, presence: true, format: { with: KATAKANA_REGEXP, message: "は全角カタカナのみで入力して下さい" }
+  validates :kana_given_name, presence: true, format: { with: KATAKANA_REGEXP, message: "は全角カタカナのみで入力して下さい" }
   validates :email, presence: true, uniqueness: true
   validates :postal_code, presence: true, format: { with: NUMBER_REGEXP }
   validates :address, presence: true
