@@ -5,10 +5,9 @@
       <%= attachment_image_tag item, :image, format: "jpeg", size: "200x150", class: "img-fluid" %>
     </div>
     <div class="card-body">
-      <p class="card-text">
+      <p class="card-title">
         <%= item.name %>
       </p>
-
       <!--販売ステータスで表記を変える-->
       <% if item.is_active == true %>
         <p class="card-text">
@@ -20,7 +19,6 @@
           売り切れ中
         </p>
       <% end %>
-
     </div>
   </div>
 <% end %>
