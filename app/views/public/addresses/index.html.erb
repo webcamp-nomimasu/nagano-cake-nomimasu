@@ -1,6 +1,8 @@
 <div class="container">
+    <div>
+      <h3>配送先登録/一覧</h3>
+    </div>
   <div class="row">
-    <h3>配送先登録/一覧</h3>
     <!--新規登録フォーム-->
     <div class="col-md-10 address-new">
       <%= form_with model: @address, local: true do |f| %>
@@ -43,7 +45,7 @@
                 <td><%= address.address %></td>
                 <td><%= address.name %></td>
                 <td>
-                  <%= link_to "編集する", edit_addresses_path(address), class: "btn btn-success" %>
+                  <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
                   <%= link_to "削除する", addresses_path(address, method: :delete, data:{ confirm: "本当に削除しますか？" }, class: "btn btn-danger") %>
                 </td>
               </tr>
