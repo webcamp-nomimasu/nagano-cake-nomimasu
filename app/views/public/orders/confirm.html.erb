@@ -1,37 +1,40 @@
 <div class="container pt-5 pb-5">
   <div class="row mt-5 mb-5">
-    <div class="col-lg-10">
+    <div class="col">
 
-
-      <table class="table-bordered">
-        <thead>
+      <div class="box-confirm">
+      <table class="table-bordered col-6" align="left">
+        <thead class="">
           <tr>
-            <th class="table-active">商品名</th>
-            <th class="table-active">単価(税込)</th>
-            <th class="table-active">数量</th>
-            <th class="table-active">小計</th>
+            <th class="table-active col-3">商品名</th>
+            <th class="table-active col-2">単価(税込)</th>
+            <th class="table-active col-1">数量</th>
+            <th class="table-active col-2">小計</th>
           </tr>
         </thead>
         <tbody>
           <% @cart_items.each do |cart| %>
             <tr>
-              <td class=""><%= attachment_image_tag cart.item, :image, :fill, 60, 60, alt: "item-image" %>
+              <td class="col-3"><%= attachment_image_tag cart.item, :image, :fill, 60, 60, alt: "item-image" %>
                            <%= cart.item.name %></td>
                              <!--floor：小数点の切り捨て、:delimitedは3桁区切り-->
               <!--<td class=""><%#= (cart.item.price * 1.1).floor.to_s(:delimited) %></td>-->
-              <td class=""><%= cart.item.tax_included_price.floor.to_s(:delimited) %></td>
-              <td class=""><%= cart.amount %></td>
-              <td class=""><%= (@sum += cart.item.tax_included_price.floor * cart.amount).to_s(:delimited) %></td>
+              <!--tax_included_price：order.rbで定義-->
+              <td class="col-2">¥<%= cart.item.tax_included_price.floor.to_s(:delimited) %></td>
+              <td class="col-2"><%= cart.amount %></td>
+              <td class="col-2">¥<%= (@sum += cart.item.tax_included_price.floor * cart.amount).to_s(:delimited) %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-</br></br>
-      <table class="table-bordered">
-        <tr><th class="table-active">送料</th><td class=""><%= @shipping_cost %></td></tr>
-        <tr><th class="table-active">商品合計</th><td class=""><%= @sum.to_s(:delimited) %></td></tr>
-        <tr><th class="table-active">請求金額</th><td class=""><%= @total_price.to_s(:delimited) %></td></tr>
+
+      <table class="table-bordered col-4">
+        <tr><th class="table-active col-2">送料</th><td class="col-2">¥<%= @shipping_cost %></td></tr>
+        <tr><th class="table-active col-2">商品合計</th><td class="col-2">¥<%= @sum.to_s(:delimited) %></td></tr>
+        <tr><th class="table-active col-2">請求金額</th><td class="col-2">¥<%= @total_price.to_s(:delimited) %></td></tr>
       </table>
+      </div>
+
 </br></br>
       <h5>支払い方法</h5>
         <%= @order.payment_method %>
