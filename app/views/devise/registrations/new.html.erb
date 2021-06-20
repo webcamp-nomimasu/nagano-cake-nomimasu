@@ -1,15 +1,25 @@
 <div class="container pt-5 pb-5">
   <div class="row mt-5 mb-5">
     <div class="col-lg-10">
-      <h2>新規会員登録</h2>
+      <h2>新規会員登録</h2></br>
+        <div class="errors-customer">
+          <% if @customer.errors.any? %>
+            <div id="error_explanation">
+              <h3><%= pluralize(@customer.errors.count, "個のエラーがあります") %></h3>
+              <ul>
+                <% @customer.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
 
         <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
-
           <div class="form-group">
             <%= f.label "名前", class: "col-3 mt-5" %>
             <%= f.label "(姓)　　"  %>
             <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "form-control-sm col-3" %>
-            
             <%= f.label "　(名)　　"  %>
             <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "form-control-sm col-3" %>
           </div>
@@ -18,7 +28,6 @@
             <%= f.label "フリガナ", class: "col-3 mt-2"%>
             <%= f.label "(セイ)　"  %>
             <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "form-control-sm col-3" %>
-            
             <%= f.label "　(メイ)　"  %>
             <%= f.text_field :kana_given_name, autofocus: true, placeholder: "ミチコ", class: "form-control-sm col-3" %>
           </div>
