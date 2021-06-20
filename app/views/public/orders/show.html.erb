@@ -30,9 +30,10 @@
               </thead>
               <tbody>
                 <% @order_items.each do |order_item| %>
+                  <% tax_price = order_item.item.price * 1.1 %>
                   <tr>
-                    <td class="col-3"><%= order_item.name %></td>
-                    <td class="col-1">¥<%= order_item.tax_included_price.floor.to_s(:delimited) %></td>
+                    <td class="col-3"><%= order_item.item.name %></td>
+                    <td class="col-1">¥<%= tax_price.floor.to_s(:delimited) %></td>
                     <td class="col-2"><%= order_item.amount %></td>
                     <td class="col-2"><%= (order_item.price * order_item.amount * 1.1).floor.to_s(:delimited) %></td>
                 <% end %>
