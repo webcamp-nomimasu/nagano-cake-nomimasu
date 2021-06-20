@@ -1,11 +1,11 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col">
+    <div class="col-md-12">
       <h3>注文履歴一覧</h3>
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-12">
       <table class="table">
         <thead>
           <tr>
@@ -18,9 +18,9 @@
         <tbody>
           <% @orders.each do |order| %>
           <tr>
-            <td><%= link_to order.created_at.to_s, admin_order_path(order) %></td>
-            <td><%= order.name %></td>
-            <td><%= order.order_item.sum(:amount) %></td>
+            <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S').to_s, admin_order_path(order) %></td>
+            <td><%= order.customer.family_name + order.customer.given_name %></td>
+            <td><%= order.order_items.sum(:amount) %></td>
             <td><%= order.status %></td>
           </tr>
           <% end %>

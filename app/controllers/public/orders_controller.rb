@@ -1,23 +1,20 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!, except: [:show, :index]
 
   def new
     @order = Order.new
     @addresses = Address.where(customer: current_customer)
-    # if current_customer.cart_items.empty?
-    #   redirect_to cart_items_path
-    # end
+    if current_customer.cart_items.empty?
+      redirect_to cart_items_path
+    end
   end
 
   def confirm
     @cart_items = current_customer.cart_items
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    # @total_price = @cart_items.sum{|c| c.item.add_tax_price * c.amount }
-    # @total_price = total_order_price
     @sum = 0
     @shipping_cost = 800
-    # @total_price = @sum + @shipping_cost
-    # @order.total_price = @order.shipping_cost + @total_price
     if params[:order][:address_option] == "0"
       @order.address = current_customer.address
       @order.postal_code = current_customer.postal_code
@@ -28,23 +25,34 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.name = @address.name
     elsif params[:order][:address_option] == "2"
-      @order = Order.new(order_params)
+      if params[:order][:postal_code] != "" && params[:order][:address] != "" && params[:order][:name] != ""
+        @order.postal_code = params[:order][:postal_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
+      else
+        flash[:alert] = "新しいお届け先が入力されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
   def create
+    tax = 1.1
+    
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.status = 0
     @order.save
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
       @order_item = OrderItem.new
       @order_item.item_id = cart_item.item.id
       @order_item.order_id = @order.id
-      @order_items.price = cart_item.item.price
-      @order_items.amount = cart_item.amount
+      @order_item.price = cart_item.item.price * tax
+      @order_item.amount = cart_item.amount
+      @order_item.making_status = 0
       @order_item.save!
-      current_customer.cart_item.destroy_all
+      current_customer.cart_items.destroy_all
     end
     redirect_to orders_complete_path
   end
@@ -54,13 +62,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @sum = 0
     @shipping_cost = 800
-    @order = current_customer.order.find(params[:id])
-    @order_items = @order.order.items
-    # if (@order.customer != current_customer) && @order.blank?
-    #   redirect_to root_path
-    # end
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
+    if (@order.customer != current_customer) && @order.blank?
+      redirect_to root_path
+    end
   end
 
   private
@@ -68,6 +75,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_price, :order_status )
   end
-
 
 end

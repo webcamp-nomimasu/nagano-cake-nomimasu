@@ -30,7 +30,7 @@
             <%= f.collection_select :address_id, @addresses, :id, :order_address, { class: "form-control" } %>
           <% end %>
           </br>
-          <%= f.radio_button :address_option, 2, checked: true %>
+          <%= f.radio_button :address_option, 2 %>
           <%= f.label :address_option, "新しいお届け先", value: 2 %>
           </br>
           <%= f.label :postal_code, "郵便番号（ハイフンなし）", class: "col-4 mt-2" %>
