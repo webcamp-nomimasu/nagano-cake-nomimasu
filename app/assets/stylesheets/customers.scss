@@ -1,3 +1,16 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box-confirm {
+  display: flex;
+  justify-content: space-between;
+ }
+
+ .errors-customer {
+  color: red;
+ }
+
+ .field_with_errors {
+  display: contents;
+ }
