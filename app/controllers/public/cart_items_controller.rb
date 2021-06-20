@@ -17,7 +17,7 @@ class Public::CartItemsController < ApplicationController
     else
       @item = Item.find(params[:cart_item][:item_id])
       @cart_item = CartItem.new
-      # flash[:alert] = "個数を選択してください。"
+      flash[:alert] = "個数を選択してください。"
       redirect_to request.referer
     end
   end
@@ -31,14 +31,14 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    # flash[:alert] = "#{@cart_item.item.name}を削除しました。"
+    flash[:alert] = "#{@cart_item.item.name}を削除しました。"
     redirect_to cart_items_path
   end
 
   def destroy_all
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
-    # flash[:alert] = "カートの商品を全て削除しました。"
+    flash[:alert] = "カートの商品を全て削除しました。"
     redirect_to cart_items_path
   end
 
