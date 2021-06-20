@@ -8,11 +8,11 @@
       <p class="card-title">
         <%= item.name %>
       </p>
-      <!--販売ステータスで表記を変える-->
+      販売ステータスで表記を変える
       <% if item.is_active == true %>
         <p class="card-text">
           ¥<%= (item.price * 1.1).to_s(:delimited) %>
-          <!--:delimited で三桁区切り-->
+          :delimited で三桁区切り
         </p>
       <% else %>
         <p class="card-text">
