@@ -4,7 +4,7 @@
       <%= render "search", genres: @genres %>
     </div>
     <div class="col-md-12 mt-4 mx-auto">
-      <% if @genre %>
+      <% if @genre %>q
         <h3 class="d-inline"><%= @genre.name %>一覧</h3>
         <h5 class="d-inline">(全<%= Item.where(item_genre_id: @genre.id).count %>件)</h5>
         <div class="items-list">
