@@ -9,4 +9,17 @@ class OrderItem < ApplicationRecord
     製作中:2,
     製作完了:3
   }
+  
+  validates :item_id, :order_id, :price, :amount, presence: true
+  
+  
+  def change_order_status
+    items = self.order.order_items
+    if self.making_status == "製作中"
+      self.order.update(status: "製作中")
+    elsif items.pluck(:making_status).all?{ |status| status == "製作完了"}
+      self.order.update(status: "発送準備中")
+    end
+  end
+  
 end
