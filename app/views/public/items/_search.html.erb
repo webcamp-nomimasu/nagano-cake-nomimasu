@@ -8,3 +8,8 @@
         <a href="/items?name=<%= genre.name %>" class="dropdown-item"><%= genre.name %></a>
       <% end %>
 </div>
+
+<%= form_with url: items_search_path(genre), method: :get, local: true do |f| %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "----", required: "required" %>
+  <%= f.submit '検索', class: "btnbtn-primary" %>
+<% end %>
