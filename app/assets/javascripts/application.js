@@ -14,8 +14,13 @@
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-select
 
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+   $(window).trigger('load.bs.select.data-api');
+});
