@@ -1,18 +1,20 @@
 <div class="container">
   <div class="row">
-    <% render "search", %>
-    <div class="col-md-10 mt-5 mx-auto">
+    <div>
+      <%= render "search", genres: @genres %>
+    </div>
+    <div class="col-md-12 mt-4 mx-auto">
       <% if @genre %>
         <h3 class="d-inline"><%= @genre.name %>一覧</h3>
         <h5 class="d-inline">(全<%= Item.where(item_genre_id: @genre.id).count %>件)</h5>
         <div class="items-list">
-          <% render "index", items: @genre.items %>
+          <%= render "index", items: @genre.items %>
         </div>
       <% else %>
         <h3 class="d-inline">商品一覧</h3>
         <h5 class="d-inline">（全<%= @items.count %>件）</h5>
         <div class="items-list">
-          <% render "index", items: @items %>
+          <%= render "index", items: @items %>
         </div>
       <% end %>
     </div>

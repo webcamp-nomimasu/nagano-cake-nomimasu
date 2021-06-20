@@ -9,10 +9,16 @@
       <p><%= @item.information %></p>
       <p>¥  <%= (@item.price * 1.1).to_s(:delimited) %><span style="font-size: small;">(税込)</span></p>
 
-      <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-        <%= f.hidden_field :item_id, value: @item.id %>
-        <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
-        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% if customer_signed_in? %>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :item_id, value: @item.id %>
+          <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
+          <%= f.submit "カートに入れる", class: "btn btn-success" %>
+        <% end %>
+      <% else %>
+        <p>『新規登録』または『ログイン』をして購入</p>
+        <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mx-2" %>
+        <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mx-2" %>
       <% end %>
     </div>
   </div>
