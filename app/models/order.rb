@@ -11,5 +11,13 @@ class Order < ApplicationRecord
 
   validates :customer_id, :payment_method, :address, :name,   presence: true
   validates :postal_code, presence: true, format: { with: NUMBER_REGEXP }
+  
+  def change_making_status
+    if self.status == "入金待ち"
+      self.order_items.update_all(making_status: :着手不可)
+    elsif self.status == "入金確認"
+      self.order_items.update_all(making_status: :製作待ち)
+    end
+  end
 
 end
