@@ -37,6 +37,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    tax = 1.1
+    
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.status = 0
@@ -46,7 +48,7 @@ class Public::OrdersController < ApplicationController
       @order_item = OrderItem.new
       @order_item.item_id = cart_item.item.id
       @order_item.order_id = @order.id
-      @order_item.price = cart_item.item.price
+      @order_item.price = cart_item.item.price * tax
       @order_item.amount = cart_item.amount
       @order_item.making_status = 0
       @order_item.save!
