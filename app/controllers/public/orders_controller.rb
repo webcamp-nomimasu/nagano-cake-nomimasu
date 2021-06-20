@@ -4,9 +4,9 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @addresses = Address.where(customer: current_customer)
-    if current_customer.cart_items.empty?
-      redirect_to cart_items_path
-    end
+    # if current_customer.cart_items.empty?
+    #   redirect_to cart_items_path
+    # end
   end
 
   def confirm
@@ -29,7 +29,14 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.name = @address.name
     elsif params[:order][:address_option] == "2"
-      @order = Order.new(order_params)
+      if params[:order][:postal_code] != "" && params[:order][:address] != "" && params[:order][:name] != ""
+        @order.postal_code = params[:order][:postal_code]
+        @order.address = params[:order][:address]
+        @order.name = params[:order][:name]
+      else
+        flash[:alert] = "新しいお届け先が入力されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
