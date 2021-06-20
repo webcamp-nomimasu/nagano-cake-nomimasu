@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
+    get 'items/search' => 'items#search'
+
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
