@@ -4,9 +4,9 @@ class OrderItem < ApplicationRecord
   
   attribute :making_status, :integer, default: "0"
   enum making_status: {
-    not_startable: 0,
-    waiting_production: 1,
-    under_production: 2,
-    production_completed: 3
+    着手不可:0,
+    製作待ち:1,
+    製作中:2,
+    製作完了:3
   }
 end
