@@ -4,7 +4,7 @@
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a href="/items" class="dropdown-item active">すべて</a>
-      <% @genres.each do |genre| %>
+      <% genres.each do |genre| %>
         <a href="/items?name=<%= genre.name %>" class="dropdown-item"><%= genre.name %></a>
       <% end %>
 </div>
