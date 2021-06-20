@@ -16,9 +16,11 @@
           <%= f.submit "カートに入れる", class: "btn btn-success" %>
         <% end %>
       <% else %>
-        <p>『新規登録』または『ログイン』をして購入</p>
-        <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-secondary mx-2" %>
-        <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-secondary mx-2" %>
+        <div class="mt-5">
+          <h6>『新規登録』または『ログイン』をして購入</h6>
+          <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-success mx-2" %>
+          <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-primary mx-2" %>
+        </div>
       <% end %>
     </div>
   </div>
