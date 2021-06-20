@@ -43,6 +43,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    @order.status = 0
     @order.save
     @cart_items = current_customer.cart_items.all
     @cart_items.each do |cart_item|
@@ -64,8 +65,8 @@ class Public::OrdersController < ApplicationController
   def show
     @sum = 0
     @shipping_cost = 800
-    @order = current_customer.order.find(params[:id])
-    @order_items = @order.order.items
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
     if (@order.customer != current_customer) && @order.blank?
       redirect_to root_path
     end
