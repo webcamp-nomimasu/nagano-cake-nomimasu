@@ -2,14 +2,14 @@ class Public::CartItemsController < ApplicationController
   # before_action :authenticate_customer!
 
   def index
-    # @cart_items = CartItem.where(customer_id: current_customer.id)
-    @cart_items = CartItem.all
+    @cart_items = CartItem.where(customer_id: current_customer.id)
+    # @cart_items = CartItem.all
   end
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
     @cart_items = current_customer.cart_items.all
-    if cart_item.amount != nil
+    if @cart_item.amount != nil
       @cart_items.each do |cart_item|
         if cart_item.item_id == @cart_item.item_id
           change_amount = cart_item.amount + @cart_item.amount
@@ -17,9 +17,9 @@ class Public::CartItemsController < ApplicationController
           @cart_item.delete
         end
       end
-      @cart_item.save
+      @cart_item.save(cart_item_params)
+      redirect_to cart_items_path(current_customer)
       flash[:success] = "カートに商品を追加しました"
-      redirect_to cart_item_path(current_customer)
     else
       redirect_to request.referer
       flash[:danger] = "数量を指定してください。"
