@@ -4,6 +4,7 @@
   </div>
   <div class="row">
     <div class="col">
+      <%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
       <table class="table table-borderless">
         <tr>
           <th style="width: 20%">購入者</th>
@@ -24,9 +25,9 @@
           <th>支払方法</th>
           <td><%= @order.payment_method %></td>
         </tr>
+          
         <tr>
           <th>注文ステータス</th>
-          <%= form_with model: [:admin, @order], method: :patch, local: true do |f| %>
           <td class="d-flex">
             <div class="col-md-2">
               <%= f.select :status, Order.statuses_i18n.invert, {prompt: false}, class: "form-control form-control-sm w-100" %>
@@ -35,13 +36,15 @@
               <%= f.submit '更新', class: "btn btn-success" %>
             </div>
           </td>
-          <% end %>
         </tr>
       </table>
+      <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-md-8">
+    <% @order_items.each do |order_item| %>
+      <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch, local: true do |f| %>
       <table class="table">
         <thead>
           <tr>
@@ -54,20 +57,18 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_items.each do |order_item| %>
           <tr>
             <td><%= order_item.item.name %></td>
             <td><%= order_item.price.to_s(:delimited) %></td>
             <td><%= order_item.amount %></td>
             <td><%= (order_item.price * order_item.amount).to_s(:delimited) %></td>
-            <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch, local: true do |f| %>
             <td><%= f.select :making_status, OrderItem.making_statuses_i18n.invert, {prompt: false}, class: "form-control form-control-sm w-100" %></td>
             <td style="width: 5%"><%= f.submit '更新', class: "btn btn-success" %></td>
-            <% end %>
           </tr>
-          <% end %>
         </tbody>
       </table>
+      <% end %>
+    <% end %>
     </div>
     <div class="col-md-4 d-flex align-items-end">
       <table class="table table-borderless">
