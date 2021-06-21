@@ -23,7 +23,10 @@
   font-family: 'M PLUS Rounded 1c', sans-serif;
  }
 
- // .top-page {
- //  background-image: url("<%= asset_path('cafe_interior.jpg')%>");
- //  background-size: cover;
- // }
+ .top-page-top {
+  width: 100%;
+  background-image: url("cheese_cake.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+ }
