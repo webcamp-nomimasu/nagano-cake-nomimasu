@@ -17,10 +17,10 @@
       </h5>
       <div class="col mx-auto text-center">
         <% @items.last(4).each do |item| %>
-          <div class="card-deck text-center d-inline-flex">
+          <div class="card-deck text-center d-inline-flex row row-eq-height">
             <div class="card border-0">
-              <div class="card-img-top">
-                <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x150", class: "rounded img-fluid"), item_path(item.id) %>
+              <div class="card-img-top" style="width: 100%;">
+                <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x150", class: "rounded"), item_path(item.id) %>
               </div>
               <div class="card-body">
                 <p class="card-title">
