@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
-
+  has_many :comment, dependent: :destroy
 
 # 全角カタカナと長音符を防ぐバリデーション
   KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
