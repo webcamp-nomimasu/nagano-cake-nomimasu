@@ -2,7 +2,7 @@
     <div class="row mt-5 mb-5">
       <div class="col-md-8 mx-auto">
         <h3><%= @customer.family_name %><%= @customer.given_name %>さんの会員詳細</h3>
-        <table class="table table-inverse table-responsive-md">
+        <table class="table table-inverse table-responsive-md mt-3">
           <tr>
             <td class="col-4 mt-2">会員ID</td>
             <td><%= @customer.id %></td>
@@ -41,9 +41,9 @@
             </td>
           </tr>
         </table>
-      <div>
-      <%= link_to "編集する", edit_admin_customer_path,class: 'btn btn-success col-4' %>
-      <%= link_to "注文履歴一覧", admin_top_path,class: 'btn btn-primary col-4' %>
+      <div class="d-flex justify-content-center">
+        <%= link_to "編集する", edit_admin_customer_path,class: 'btn btn-success col-4 mr-3' %>
+        <%= link_to "注文履歴一覧", admin_top_path,class: 'btn btn-primary col-4' %>
       </div>
     </div>  
   </div>
