@@ -1,13 +1,11 @@
-<div class="container pt-5 pb-5">
-  <div class="row mt-5 mb-5">
-    <div class="col-lg-10">
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-10 mx-auto">
       <h2>会員情報編集</h2>
-
         <%= form_with model: @customer, url: customers_path, local: true do |f| %>
-
           <div class="form-group">
             <%= f.label "名前", class: "col-3 mt-5" %>
-            <%= f.label "(姓)　　"  %>
+            <%= f.label "(姓)　　　" %>
             <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "form-control-sm col-3" %>
             <% if @customer.errors.include?(:family_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:family_name).first %>
@@ -21,7 +19,7 @@
 
           <div class="form-group">
             <%= f.label "フリガナ", class: "col-3 mt-2"%>
-            <%= f.label "(セイ)　"  %>
+            <%= f.label "(セイ)　　" %>
             <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "form-control-sm col-3" %>
             <% if @customer.errors.include?(:kana_family_name) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_family_name).first %>
@@ -69,13 +67,7 @@
             <%= f.submit "編集内容を保存", class: "btn btn-success col-4 mt-2" %>
             <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger col-2 ml-5" %>
           </div>
-
         <% end %>
-        
-        </br></br>
-
-          
-
     </div>
   </div>
 </div>
