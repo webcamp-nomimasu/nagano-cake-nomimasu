@@ -17,6 +17,11 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+
+ * {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+ }
 
  // .top-page {
  //  background-image: url("<%= asset_path('cafe_interior.jpg')%>");
