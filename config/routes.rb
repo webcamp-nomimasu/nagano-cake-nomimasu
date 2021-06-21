@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-
     get 'items/search' => 'items#search'
 
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      resources :comments, only: [:create, :destroy, :index]
+    end
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
     post 'orders/confirm' => 'orders#confirm'
