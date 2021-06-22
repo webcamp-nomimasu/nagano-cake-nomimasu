@@ -21,7 +21,7 @@
 //= require_tree .
 
 $(window).on('load',function(){
-  // $("#js-loader").fadeOut(); これだけでOK
+  // $("#js-loader").fadeOut();
 
   // codepen用
   function loaderClose(){
@@ -31,9 +31,9 @@ $(window).on('load',function(){
 
 });
 
-// $('nomimasu-link').on('mouseover keydown',function (e) {
-//   console.log(e);
-//   if (e.keyCode == 89) {
-//     $('admin-link').show();
-//   }
-// });
+$(window).on('keydown',function (e) {
+  console.log(e);
+  if (e.keyCode == 89) {
+    $('#admin-link').show();
+  }
+});
