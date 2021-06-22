@@ -10,13 +10,10 @@
       <%= form_with model:@customer, url:admin_customer_path, local:true do |f| %>
       <div class="form-group">
         <%= f.label "氏名", class: "col-3 mt-2" %>
-        <div class="col-3">
         <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "form-control-md col-3 mr-5" %>
         <% if @customer.errors.include?(:family_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:family_name).first %>
         <% end %>
-          
-        </div>
         <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "form-control-md col-3" %>
         <% if @customer.errors.include?(:given_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:given_name).first %>
