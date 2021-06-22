@@ -28,7 +28,7 @@
         <tr>
           <th>税抜価格</th>
           <td colspan="2"><%= f.text_field :price, placeholder: "1,000", size: "30", class: "form-control" %></td>
-          <td>円</td>
+          <td class="pl-0 align-bottom">円</td>
         </tr>
         <tr>
           <th>販売ステータス</th>
@@ -43,10 +43,9 @@
         </tr>
       </table>
     </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-sm-3">
-        <%= f.submit '変更を保存', class: "btn btn-success" %>
-      </div>
+    <div class="row d-flex justify-content-center mb-5">
+        <%= f.submit '変更を保存', class: "btn btn-success col-md-3" %>
     </div>
+    <br></br>
   <% end %>
 </div>

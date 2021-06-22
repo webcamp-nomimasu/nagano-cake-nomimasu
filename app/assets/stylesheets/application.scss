@@ -17,8 +17,34 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
+ @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
 
- // .top-page {
- //  background-image: url("<%= asset_path('cafe_interior.jpg')%>");
- //  background-size: cover;
- // }
+ * {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+ }
+
+ .main {
+  margin-bottom: 50px;
+ }
+
+ header {
+  background: linear-gradient(#FFDAB9, #FFF);
+ }
+
+ footer {
+  background: linear-gradient(#FFF, #FFDAB9);
+ }
+
+ .top-page-top {
+  width: 100%;
+  background-image: url("cheese_cake_m.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+ }
+
+ .card-image-top {
+  width: 200px;
+  height: 124px;
+  object-fit: cover;
+ }
