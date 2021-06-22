@@ -26,6 +26,15 @@
           <td colspan="2"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--", size: "30", class: "form-control" %></td>
         </tr>
         <tr>
+          <th>アレルギー表示</th>
+          <td colspan="2"><% %w())
+                          <%= f.collection_check_boxes :allergy_id, Allergy.all, :id, :name do |allergy| %>
+                          <%= allergy.label { allergy.check_box + allergy.text } %>
+                          <% end %>
+          </td>
+          </td>
+        </tr>
+        <tr>
           <th>税抜価格</th>
           <td colspan="2"><%= f.text_field :price, placeholder: "1,000", size: "30", class: "form-control" %> 円</td>
         </tr>
