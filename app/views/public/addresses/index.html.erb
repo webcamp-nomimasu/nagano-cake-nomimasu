@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="mx-auto mt-4">
+    <div class="mx-auto mt-3 col-md-10 offset-1">
       <h3>配送先登録</h3>
     </div>
-  <div class="row col">
+  <div class="row  col-md-10 offset-1">
     <!--新規登録フォーム-->
     <div class="col-md-10 form-row address-new">
       <%= form_with model: @address, local: true do |f| %>
@@ -29,7 +29,7 @@
       <% if @addresses.empty? %>
         <h5>登録された配送先はありません</h5>
       <% else %>
-        <div class="mx-auto mt-2">
+        <div class="mx-auto mt-3">
           <h3>配送先一覧</h3>
         </div>
         <table class="tabel table-bordered">

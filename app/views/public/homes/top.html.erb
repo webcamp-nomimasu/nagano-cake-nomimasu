@@ -1,17 +1,47 @@
-<div class="container top-page">
+<div class="container">
   <div class="row">
-    <div class="mx-auto col-md-6">
-      <p class="text-center py-5 px-5">
+    <div class="mx-auto col-lg-12">
+      <p class="text-center py-5 px-5 top-page-top">
         ようこそ、ながのCAKEへ！<br>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない⽅も商品の閲覧はできますが、<br>
       購⼊には会員登録が必要になります。<br>
       </p>
     </div>
-    <div class="col-md-10 offset-md-2 mt-4">
-    <h3 class="mb-3">新着商品</h3>
-
-      <%= link_to "全ての商品を見る", items_path, class: "float-right" %>
+    <div class="col-lg-10 offset-md-1 mt-4">
+      <h3 class="mb-3">
+        新着商品
+      </h3>
+      <h5>
+        <%= link_to "＞ 全ての商品を見る", items_path, class: "d-flex justify-content-end" %>
+      </h5>
+      <div class="col mx-auto text-center">
+        <% @items.last(4).each do |item| %>
+          <div class="card-deck text-center d-inline-flex mt-3">
+            <div class="card border-0">
+              <div class="card-img-top">
+                <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", class: "rounded"), item_path(item.id) %>
+              </div>
+              <div class="card-body">
+                <p class="card-title">
+                  <%= item.name %>
+                </p>
+                <!--販売ステータスで表記を変える-->
+                <% if item.is_active == true %>
+                  <p class="card-text">
+                    ¥<%= (item.price * 1.1).floor.to_s(:delimited) %>
+                    <!--:delimited で三桁区切り-->
+                  </p>
+                <% else %>
+                  <p class="card-text">
+                    売り切れ中
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
