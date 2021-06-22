@@ -39,10 +39,10 @@ class Admin::ItemsController < ApplicationController
   private
   
   def allergy_string
-    params[:item][:allergies] = params[:item][:allergies].join(",")
+    params[:item][:allergies] = params[:item][:allergies].join(" ")
   end
 
   def item_params
-    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :checkbox, :allergies)
+    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :allergies)
   end
 end
