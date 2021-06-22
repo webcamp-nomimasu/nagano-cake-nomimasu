@@ -11,7 +11,7 @@ class Public::AddressesController < ApplicationController
       redirect_to addresses_path
     else
       redirect_to addresses_path  # render?
-      flash[:alert] = "保存できませんでした"
+      flash[:alert] = "すべて入力してください。"
     end
   end
 
@@ -24,6 +24,7 @@ class Public::AddressesController < ApplicationController
     if @address.update(address_params)
       redirect_to addresses_path
     else
+      flash[:alert] = "すべて入力してください。"
       redirect_to request.referer
     end
   end
