@@ -37,11 +37,35 @@
 
  .top-page-top {
   width: 100%;
-  background-image: url("cheese_cake.jpg");
+  background-image: url("cheese_cake_m.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
  }
+
+
+ .card-image-top {
+  width: 200px;
+  height: 124px;
+  object-fit: cover;
+ }
+
+ .card {
+  border: 1px solid #ddd;
+  width: 300px;
+  height: 226px;
+  margin: 20px auto 0;
+  transition-duration: 0.5s;
+}
+.card {
+  width: 100%;
+  cursor: pointer;
+}
+.card:hover{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  transform: translateY(-10px);
+  transition-duration: 0.5s;
+}
  
  
  @keyframes wave {
