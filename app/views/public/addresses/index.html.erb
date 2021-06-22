@@ -25,20 +25,20 @@
     </div>
 
     <!--一覧-->
-    <div class="adresses-index">
+    <div class="adresses-index col-md-10">
       <% if @addresses.empty? %>
         <h5>登録された配送先はありません</h5>
       <% else %>
-        <div class="mx-auto mt-3">
+        <div class="col mx-auto mt-3">
           <h3>配送先一覧</h3>
         </div>
-        <table class="tabel table-bordered">
+        <table class="tabel table-bordered" style="width: 100%;">
           <thead>
             <tr>
-              <th>郵便番号</th>
-              <th>住所</th>
-              <th>宛名</th>
-              <th></th>
+              <th style="width: 15%;">郵便番号</th>
+              <th style="width: 35%;">住所</th>
+              <th style="width: 20%;">宛名</th>
+              <th style="width: 30%;"></th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +47,7 @@
                 <td><%= address.postal_code %></td>
                 <td><%= address.address %></td>
                 <td><%= address.name %></td>
-                <td>
+                <td class="text-center mx-0">
                   <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
                   <%= link_to "削除する", address_path(address), method: :delete, data:{ confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
                 </td>
