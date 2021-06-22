@@ -22,17 +22,19 @@
           <div class="mt-3 mb">
               レビュー<%= @item.comments.count %>件 |
             <%= link_to item_comments_path(item_id: @item.id) do%>
-              レビューを書く
+              レビュー画面へ
             <% end %>
           </div>
         </div>
-        <% if customer_signed_in? %>
-          <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
-            <%= f.submit "カートに入れる", class: "btn btn-success" %>
-          <% end %>
-        <% else %>
+        <div class="mt-4">
+          <% if customer_signed_in? %>
+            <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
+              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% end %>
+          <% else %>
+        </div>
           <div class="mt-5">
             <h6>『新規登録』または『ログイン』をして購入</h6>
             <div class="d-flex justify-content-center mx-auto mt-3">

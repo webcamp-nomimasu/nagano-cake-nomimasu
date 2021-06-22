@@ -16,14 +16,16 @@
       <% end %>
   </table>
 
-  <% if customer_signed_in? %>
-    <%= form_with model:[item, comment] do |f| %>
-      <div class="col mb-2 mt-5 text-center">
-        <%= f.text_area :comment, placeholder: "レビュー", class: "form-control" %>
-      </div>
-      <div class="d-flex justify-content-center">
-        <%= f.submit "投稿する", class: "btn btn-success col-4 mt-2" %>
-      </div>
+  <div>
+    <% if customer_signed_in? %>
+      <%= form_with model:[item, comment] do |f| %>
+        <div class="col mb-2 mt-5 text-center">
+          <%= f.text_area :comment, placeholder: "レビュー", class: "form-control" %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <%= f.submit "投稿する", class: "btn btn-success col-4 mt-2" %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
