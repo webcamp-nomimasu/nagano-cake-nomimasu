@@ -17,7 +17,7 @@ class Public::CartItemsController < ApplicationController
     else
       @item = Item.find(params[:cart_item][:item_id])
       @cart_item = CartItem.new
-      flash[:alert] = "個数を選択してください。"
+      flash[:alert] = "数量を選択してください。"
       redirect_to request.referer
     end
   end
@@ -26,6 +26,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(amount: params[:cart_item][:amount].to_i)
     redirect_to cart_items_path
+    flash[:notice] = "#{@cart_item.item.name}の数量を変更しました！"
   end
 
   def destroy
