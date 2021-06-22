@@ -11,10 +11,10 @@
       <div class="form-group">
         <%= f.label "氏名", class: "col-3 mt-2" %>
         <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "form-control-md col-3 mr-5" %>
+        <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "form-control-md col-3" %>
         <% if @customer.errors.include?(:family_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:family_name).first %>
         <% end %>
-        <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "form-control-md col-3" %>
         <% if @customer.errors.include?(:given_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:given_name).first %>
         <% end %>
@@ -23,10 +23,10 @@
       <div class="form-group">
         <%= f.label "フリガナ", class: "col-3 mt-2"%>
         <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "form-control-md col-3 mr-5" %>
+        <%= f.text_field :kana_given_name, autofocus: true, placeholder: "ミチコ", class: "form-control-md col-3" %>
         <% if @customer.errors.include?(:kana_family_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_family_name).first %>
         <% end %>
-        <%= f.text_field :kana_given_name, autofocus: true, placeholder: "ミチコ", class: "form-control-md col-3" %>
         <% if @customer.errors.include?(:kana_given_name) %>
             <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_given_name).first %>
         <% end %>
