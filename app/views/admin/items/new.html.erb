@@ -4,7 +4,7 @@
       <h3 class="page-title">商品新規登録</h3>
     </div>
   </div>
-  
+
   <%= form_with model: [:admin, @item], local:true do |f| %>
     <div class="row d-flex justify-content-center">
       <%= render 'admin/items/error_message', object: @item %>
@@ -27,9 +27,11 @@
         </tr>
         <tr>
           <th>アレルギー表示</th>
-          <td colspan="2"><% %w())
-                          <%= f.collection_check_boxes :allergy_id, Allergy.all, :id, :name do |allergy| %>
-                          <%= allergy.label { allergy.check_box + allergy.text } %>
+          <td colspan="2"><% %w(卵 牛乳 小麦).each.with_index do |allergy,i| %>
+                          <label>
+                          <%= check_box_tag 'item[allergies][]', allergy, false, id: "item_allergies_#{i}" %>
+                          <%= allergy %>
+                          </label>
                           <% end %>
           </td>
           </td>
@@ -51,7 +53,7 @@
           </td>
         </tr>
       </table>
-      
+
     </div>
     <div class="row d-flex justify-content-center mb-5">
         <%= f.submit '新規登録', class: "btn btn-success col-md-3" %>

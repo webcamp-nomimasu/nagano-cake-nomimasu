@@ -8,4 +8,8 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
+  
+  before_save do
+    self.shut_categories_ids.gsub!(/[\[\]\"]/, "") if attribute_present?("shut_categories_ids")
+  end
 end

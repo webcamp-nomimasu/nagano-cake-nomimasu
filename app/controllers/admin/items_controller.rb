@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @items = Item.page(params[:page]).per(10).reverse_order
   end
@@ -34,10 +34,10 @@ class Admin::ItemsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   private
-  
+
   def item_params
-    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active)
+    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :checkbox, allergies:[])
   end
 end

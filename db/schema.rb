@@ -86,9 +86,8 @@ ActiveRecord::Schema.define(version: 2021_06_22_010716) do
     t.boolean "is_active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "allergy_id"
     t.boolean "checkbox"
-    t.text "allergy"
+    t.text "allergies"
   end
 
   create_table "order_items", force: :cascade do |t|
