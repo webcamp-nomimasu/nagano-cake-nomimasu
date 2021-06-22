@@ -4,11 +4,11 @@
       <h3 class="page-title">商品詳細</h3>
     </div>
   </div>
-  
+
   <div class="row">
-    
+
     <div class="col">
-      <%= attachment_image_tag @item, :image, :fill, 400, 300, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag @item, :image, size: "400x300", fallback: "no_image.jpg", class: "img-fluid" %>
     </div>
     <div class="col-7">
       <table class="table table-borderless">
@@ -19,6 +19,10 @@
         <tr>
           <th>商品説明</th>
           <td><%= @item.information %></td>
+        </tr>
+         <tr>
+          <th>アレルギー</th>
+          <td><%= @item.allergies %></td>
         </tr>
         <tr>
           <th>ジャンル</th>

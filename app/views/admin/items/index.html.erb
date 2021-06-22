@@ -1,14 +1,14 @@
 <div class="container mt-3">
-  <div class="row">
-    <div class="col-md-10 mx-auto">
+  <div class="row mb-3">
+    <div class="col-md-8 mx-auto">
       <h3>商品一覧</h3>
     </div>
-    <div class="col">
-      <%= link_to '+', new_admin_item_path, class: "btn btn-success rounded-circle" %>
+    <div class="col-md-2" >
+      <%= link_to '', new_admin_item_path, class: "fas fa-plus-circle fa-3x add-item" %>
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-10 mx-auto">
       <div class="items-all">
         <table class="table">
           <thead>
@@ -16,7 +16,8 @@
               <th style="width: 10%">商品ID</th>
               <th style="width: 30%">商品名</th>
               <th style="width: 10%">税抜価格</th>
-              <th style="width: 30%">ジャンル</th>
+              <th style="width: 15%">ジャンル</th>
+              <th style="width: 15%">アレルギー</th>
               <th style="width: 20%">ステータス</th>
             </tr>
           </thead>

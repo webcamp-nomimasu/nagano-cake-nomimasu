@@ -4,7 +4,7 @@
       <h3 class="page-title">商品編集</h3>
     </div>
   </div>
-  
+
   <%= form_with model: [:admin, @item], local:true do |f| %>
     <div class="row d-flex justify-content-center">
       <%= render 'admin/items/error_message', object: @item %>
@@ -26,9 +26,18 @@
           <td colspan="2"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--", size: "30", class: "form-control" %></td>
         </tr>
         <tr>
+          <th>アレルギー</th>
+          <td colspan="2"><% %w(卵 牛乳 小麦 大豆).each.with_index do |allergy,i| %>
+                          <label>
+                          <%= check_box_tag 'item[allergies][]', allergy, id: "item_allergies_#{i}" %>
+                          <%= allergy %>
+                          </label>
+                          <% end %></td>
+        </tr>
+        <tr>
           <th>税抜価格</th>
           <td colspan="2"><%= f.text_field :price, placeholder: "1,000", size: "30", class: "form-control" %></td>
-          <td>円</td>
+          <td class="pl-0 align-bottom">円</td>
         </tr>
         <tr>
           <th>販売ステータス</th>
@@ -43,10 +52,9 @@
         </tr>
       </table>
     </div>
-    <div class="row d-flex justify-content-center">
-      <div class="col-sm-3">
-        <%= f.submit '変更を保存', class: "btn btn-success" %>
-      </div>
+    <div class="row d-flex justify-content-center mb-5">
+        <%= f.submit '変更を保存', class: "btn btn-success col-md-3" %>
     </div>
+    <br></br>
   <% end %>
 </div>

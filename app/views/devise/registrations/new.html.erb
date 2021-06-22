@@ -1,7 +1,7 @@
-<div class="container pt-5 pb-5">
-  <div class="row mt-5 mb-5">
-    <div class="col-lg-10">
-      <h2>新規会員登録</h2></br>
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-10 mx-auto">
+      <h2>新規会員登録</h2>
         <div class="errors-customer">
           <% if @customer.errors.any? %>
             <div id="error_explanation">
@@ -18,17 +18,17 @@
         <%= form_with model: @customer, url: customer_registration_path, local: true do |f| %>
           <div class="form-group">
             <%= f.label "名前", class: "col-3 mt-5" %>
-            <%= f.label "(姓)　　"  %>
+            <%= f.label "(姓)　　　" %>
             <%= f.text_field :family_name, autofocus: true, placeholder: "令和", class: "form-control-sm col-3" %>
-            <%= f.label "　(名)　　"  %>
+            <%= f.label "　(名)　　" %>
             <%= f.text_field :given_name, autofocus: true, placeholder: "道子", class: "form-control-sm col-3" %>
           </div>
 
           <div class="form-group">
             <%= f.label "フリガナ", class: "col-3 mt-2"%>
-            <%= f.label "(セイ)　"  %>
+            <%= f.label "(セイ)　　" %>
             <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "form-control-sm col-3" %>
-            <%= f.label "　(メイ)　"  %>
+            <%= f.label "　(メイ)　" %>
             <%= f.text_field :kana_given_name, autofocus: true, placeholder: "ミチコ", class: "form-control-sm col-3" %>
           </div>
 
@@ -70,10 +70,10 @@
 
       </br></br>
 
-      <h3 class="mb-3">既に登録済みの方</h3>
+      <div>
+        <h3 class="mb-3">既に登録済みの方</h3>
         <%= link_to "こちら", new_customer_session_path %> からログインしてください。
-
-      </br></br>
+      </div>
     </div>
   </div>
 </div>
