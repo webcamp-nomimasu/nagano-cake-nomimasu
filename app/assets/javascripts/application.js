@@ -30,3 +30,10 @@ $(window).on('load',function(){
   setTimeout(loaderClose, 1000);
 
 });
+
+// $('nomimasu-link').on('mouseover keydown',function (e) {
+//   console.log(e);
+//   if (e.keyCode == 89) {
+//     $('admin-link').show();
+//   }
+// });
