@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -122,24 +120,27 @@
       </nav>
     </header>
 
-    <% if flash[:notice] %>
-    <div class="alert alert-info">
-      <%= flash[:notice] %>
+    <div class="col-lg-10 mx-auto">
+      <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+      <% end %>
     </div>
-    <% end %>
-    <% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <%= flash[:alert] %>
-    </div>
-    <% end %>
 
     <div class="main">
       <%= yield %>
     </div>
 
+
     <footer class="fixed-bottom">
       <div class="d-flex align-items-center justify-content-center text-dark" style="height: 50px;">
-        &copy; nomimasu?
+        <p class="mb-0" id="nomimasu">&copy; nomimasu?</p>
       </div>
     </footer>
   </body>

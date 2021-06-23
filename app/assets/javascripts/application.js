@@ -21,7 +21,7 @@
 //= require_tree .
 
 $(window).on('load',function(){
-  // $("#js-loader").fadeOut(); これだけでOK
+  // $("#js-loader").fadeOut();
 
   // codepen用
   function loaderClose(){
@@ -29,4 +29,30 @@ $(window).on('load',function(){
   }
   setTimeout(loaderClose, 1000);
 
+});
+
+$(window).keydown(function (e1) {
+  console.log(e1);
+  if (e1.keyCode == 89) {
+    // 89 = y
+    $(window).keydown(function (e2) {
+    console.log(e2);
+    if (e2.keyCode == 69) {
+      // 69 = e
+      $(window).keydown(function (e3) {
+      console.log(e3);
+      if (e3.keyCode == 83) {
+        // 83 = s
+        $('#nomimasu').click(function(){
+          $('#admin-link').show();
+      })}
+    })}
+  })}
+});
+
+$(window).keydown(function (e4){
+  if(e4.keyCode == 81) {
+    // 81 = q
+    $('#admin-link').hide();
+  }
 });
