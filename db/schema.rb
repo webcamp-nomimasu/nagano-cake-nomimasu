@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2021_06_23_043107) do
     t.string "name", null: false
     t.string "email", null: false
     t.string "phone_number", null: false
-    t.integer "subject", default: 0, null: false
+    t.text "subject", null: false
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
