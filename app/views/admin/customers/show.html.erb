@@ -2,37 +2,37 @@
     <div class="row mt-3 mb-3">
       <div class="col-md-6 mx-auto">
         <h3><%= @customer.family_name %><%= @customer.given_name %>さんの会員詳細</h3>
-        <table class="table table-inverse table-responsive-md mt-3">
+        <table class="table table-inversemt-3">
           <tr>
-            <td class="col-4 mt-2">会員ID</td>
-            <td><%= @customer.id %></td>
+            <td class="mt-2" style="width: 30%;">会員ID</td>
+            <td style="width: 70%;"><%= @customer.id %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">氏名</td>
+            <td class="mt-2">氏名</td>
             <td><%= @customer.family_name %><%= @customer.given_name %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">フリガナ</td>
+            <td class="mt-2">フリガナ</td>
             <td><%= @customer.kana_family_name %><%= @customer.kana_given_name %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">郵便番号</td>
+            <td class="mt-2">郵便番号</td>
             <td><%= @customer.postal_code %></td>
           </tr>
             <tr>
-            <td class="col-4 mt-2">住所</td>
+            <td class="mt-2">住所</td>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">電話番号</td>
+            <td class="mt-2">電話番号</td>
             <td><%= @customer.phone_number %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">メールアドレス</td>
+            <td class="mt-2">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
           <tr>
-            <td class="col-4 mt-2">会員ステータス</td>
+            <td class="mt-2">会員ステータス</td>
             <td>
               <% if @customer.is_deleted == true %>
                <p class="text-secondary mt-2">退会</p>
