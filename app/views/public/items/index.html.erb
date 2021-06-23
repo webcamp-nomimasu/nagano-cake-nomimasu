@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="mt-3 mx-auto">
+  <div class="row col-12 mx-auto">
+    <div class="mt-3">
       <div>
         <%= render "search", genres: @genres, genre: @genre %>
       </div>
       <div class="mt-3">
         <h3 class="d-inline">商品一覧</h3>
         <h5 class="d-inline">（全<%= @items.count %>件）</h5>
-        <div class="items-list justify-content-center">
+        <div class="items-list text-center mx-auto">
           <%= render "index", items: @items %>
         </div>
       </div>

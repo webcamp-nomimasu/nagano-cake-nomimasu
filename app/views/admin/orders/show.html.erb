@@ -41,31 +41,29 @@
       <table class="table mb-0">
         <thead class="table-active">
           <tr>
-            <th class="align-middle text-center">商品名</th>
-            <th class="align-middle text-center">単価（税込）</th>
-            <th class="align-middle text-center">数量</th>
-            <th class="align-middle text-center">小計</th>
-            <th class="align-middle text-center" colspan="2">製作ステータス</th>
+            <th class="align-middle text-center" style="width: 25%;">商品名</th>
+            <th class="align-middle text-center" style="width: 20%;">単価（税込）</th>
+            <th class="align-middle text-center" style="width: 10%;">数量</th>
+            <th class="align-middle text-center" style="width: 15%;">小計</th>
+            <th class="align-middle text-center" style="width: 25%;">製作ステータス</th>
             <th></th>
           </tr>
         </thead>
-      </table>
-    <% @order_items.each do |order_item| %>
-      <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch, local: true do |f| %>
-      <table class="table mt-o">
         <tbody>
-          <tr>
-            <td class="align-middle text-center"><%= order_item.item.name %></td>
-            <td class="align-middle text-center"><%= order_item.price.to_s(:delimited) %></td>
-            <td class="align-middle text-center"><%= order_item.amount %></td>
-            <td class="align-middle text-center"><%= (order_item.price * order_item.amount).to_s(:delimited) %></td>
-            <td class="align-middle text-center"><%= f.select :making_status, OrderItem.making_statuses_i18n.invert, {prompt: false}, class: "form-control form-control-sm w-100" %></td>
-            <td class="align-middle text-center"><%= f.submit '更新', class: "btn btn-success" %></td>
-          </tr>
+          <% @order_items.each do |order_item| %>
+            <%= form_with model: order_item, url: admin_order_order_item_path(order_item), method: :patch, local: true do |f| %>
+                <tr>
+                  <td class="align-middle text-center"><%= order_item.item.name %></td>
+                  <td class="align-middle text-center"><%= order_item.price.to_s(:delimited) %></td>
+                  <td class="align-middle text-center"><%= order_item.amount %></td>
+                  <td class="align-middle text-center"><%= (order_item.price * order_item.amount).to_s(:delimited) %></td>
+                  <td class="align-middle text-center"><%= f.select :making_status, OrderItem.making_statuses_i18n.invert, {prompt: false}, class: "form-control form-control-sm w-100" %></td>
+                  <td class="align-middle text-center"><%= f.submit '更新', class: "btn btn-success" %></td>
+                </tr>
+            <% end %>
+          <% end %>
         </tbody>
       </table>
-      <% end %>
-    <% end %>
     </div>
     <div class="col-md-3 d-flex align-items-end">
       <table class="table table-borderless">
