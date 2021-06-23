@@ -1,5 +1,7 @@
 class Public::ContactsController < ApplicationController
-  
+  # コンタクトページだけコンタクトリンクを消す
+  layout 'no_contact'
+
   def new
     @contact = Contact.new
   end
@@ -20,15 +22,15 @@ class Public::ContactsController < ApplicationController
       render :new
     end
   end
-  
+
   def back
     @contact = Contact.new(contact_params)
     render :new
-  end  
-  
+  end
+
   def done
-  end  
-  
+  end
+
 
   private
 
