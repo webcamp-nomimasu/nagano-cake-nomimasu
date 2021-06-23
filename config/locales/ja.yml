@@ -2,7 +2,7 @@ ja:
   devise:
     sessions:
       customer:
-        signed_in: 'ログインを行ってください'
+        signed_in: 'ログインしました'
     failure:
       admin:
         invalid: '必須項目を入力してください。'
