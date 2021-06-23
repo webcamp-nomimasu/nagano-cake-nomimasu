@@ -16,6 +16,10 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete'
 
     resources :orders, only: [:index, :show, :new, :create]
+    
+    resources :contacts, only: [:new, :create]
+    post 'contacts/confirm' => 'contacts#confirm', as: 'contacts_confirm'
+    get 'contacts/done' => 'contacts#done'
 
     resources :cart_items, only: [:index, :create, :update]
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
