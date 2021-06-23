@@ -1,0 +1,33 @@
+<div class="container mt-3">
+  <div class="row mb-3">
+    <div class="col-md-8 mx-auto">
+      <h3>お問い合わせ一覧</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <div class="items-all">
+        <table class="table table-hover">
+          <thead class="table-active">
+            <tr>
+              <th style="width: 20%">お客様名</th>
+              <th style="width: 25%">メールアドレス</th>
+              <th style="width: 15%">電話番号</th>
+              <th style="width: 40%">用件</th>
+          </thead>
+          <tbody>
+            <% @contacts.each do |contact| %>
+            <tr>
+              <td><%= link_to contact.name, admin_contact_path(contact) %></td>
+              <td><%= contact.email %></td>
+              <td><%= contact.phone_number %></td>
+              <td><%= link_to contact.subject, admin_contact_path(contact) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-center"><%= paginate(@contacts) %></div>
+    </div>
+  </div>
+</div>

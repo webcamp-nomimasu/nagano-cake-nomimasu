@@ -14,12 +14,17 @@ class Public::ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     if @contact.save
-      redirect_to root_path
+      redirect_to contacts_done_path
     else
       flash[:alert] = "すべて入力してください。"
       render :new
     end
   end
+  
+  def back
+    @contact = Contact.new(contact_params)
+    render :new
+  end  
   
   def done
   end  
@@ -28,7 +33,7 @@ class Public::ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:email,:name,:phone_number, :subject, :message)
+    params.require(:contact).permit(:email, :name, :phone_number, :subject, :message)
   end
 
 end
