@@ -1,5 +1,4 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_customer!
 
   def index
     @item = Item.find(params[:item_id])
