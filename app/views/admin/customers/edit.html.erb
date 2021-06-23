@@ -6,7 +6,7 @@
         <label class="col-3 mb-4 mt-2">会員ID</label>
         <label><%= @customer.id %></label>
       </div>
-      
+
       <%= form_with model:@customer, url:admin_customer_path, local:true do |f| %>
         <div class="form-group">
           <%= f.label "氏名", class: "col-3 mt-2" %>
@@ -19,7 +19,7 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:given_name).first %>
           <% end %>
         </div>
-        
+
         <div class="form-group">
           <%= f.label "フリガナ", class: "col-3 mt-2"%>
           <%= f.text_field :kana_family_name, autofocus: true, placeholder: "レイワ", class: "form-control-md col-3 mr-5" %>
@@ -31,7 +31,7 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:kana_given_name).first %>
           <% end %>
         </div>
-        
+
         <div class="form-group">
           <%= f.label "郵便番号", class: "col-3 mt-2"%>
           <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "form-control-md col-3" %>
@@ -39,7 +39,7 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:postal_code).first %>
           <% end %>
         </div>
-        
+
         <div class="form-group">
           <%= f.label "住所", class: "col-3 mt-2"%>
           <%= f.text_field :address, autofocus: true, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control-md col-7" %>
@@ -47,7 +47,7 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:address).first %>
           <% end %>
         </div>
-        
+
         <div class="form-group">
           <%= f.label "電話番号", class: "col-3 mt-2"%>
           <%= f.text_field :phone_number, autofocus: true, placeholder: "00000000000", class: "form-control-md col-3" %>
@@ -55,7 +55,7 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:phone_number).first %>
           <% end %>
         </div>
-        
+
         <div class="form-group">
           <%= f.label "メールアドレス", class: "col-3 mt-2"%>
           <%= f.text_field :email, autofocus: true, placeholder: "example@example.com", class: "form-control-md col-3" %>
@@ -63,13 +63,13 @@
               <p style="color: red;"><%= @customer.errors.full_messages_for(:email).first %>
           <% end %>
         </div>
-        
+
         <div>
           <%= f.label "会員ステータス", class: "col-3 mt-2"%>
-          <%= f.radio_button :is_deleted, "false" %>有効 <%= f.radio_button :is_deleted, "true" %>退会
-        </div>  
+          <%= f.radio_button :is_deleted, "false" %>有効 　　<%= f.radio_button :is_deleted, "true" %>退会
+        </div>
         <div class="offset-3 mt-2"><%= f.submit '変更を保存', class: "btn btn-success col-md-4 offset-md-2" %></div>
       <% end %>
-    </div>  
+    </div>
   </div>
 </div>
