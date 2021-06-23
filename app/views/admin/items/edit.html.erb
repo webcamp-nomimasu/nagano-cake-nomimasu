@@ -4,7 +4,7 @@
       <h3 class="page-title">商品編集</h3>
     </div>
   </div>
-  
+
   <%= form_with model: [:admin, @item], local:true do |f| %>
     <div class="row d-block justify-content-center">
       <div class="col-md-6 mx-auto">
@@ -26,6 +26,15 @@
         <tr>
           <th>ジャンル</th>
           <td colspan="2"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--", size: "30", class: "form-control" %></td>
+        </tr>
+        <tr>
+          <th>アレルギー</th>
+          <td colspan="2"><% %w(卵 牛乳 小麦 大豆).each.with_index do |allergy,i| %>
+                          <label>
+                          <%= check_box_tag 'item[allergies][]', allergy, id: "item_allergies_#{i}" %>
+                          <%= allergy %>
+                          </label>
+                          <% end %></td>
         </tr>
         <tr>
           <th>税抜価格</th>
