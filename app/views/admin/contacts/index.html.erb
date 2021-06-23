@@ -17,11 +17,11 @@
           </thead>
           <tbody>
             <% @contacts.each do |contact| %>
-            <tr>
-              <td><%= link_to contact.name, admin_contact_path(contact) %></td>
+            <tr onclick='window.location="<%= '/admin/contacts/' + contact.id.to_s %>"' role="link" class="contact-page">
+              <td><%= contact.name %></td>
               <td><%= contact.email %></td>
               <td><%= contact.phone_number %></td>
-              <td><%= link_to contact.subject, admin_contact_path(contact) %></td>
+              <td><%= contact.subject %></td>
             </tr>
             <% end %>
           </tbody>
