@@ -1,5 +1,5 @@
 <% items.each do |item| %>
-  <div class="card-deck text-center d-inline-flex mt-3">
+  <div class="card-deck text-center d-inline-flex mt-3 col-3">
     <div class="card border-0">
       <div class="card-img-top">
         <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", class: "rounded"), item_path(item.id) %>
