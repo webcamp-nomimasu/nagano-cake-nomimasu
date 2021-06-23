@@ -2,7 +2,7 @@ ja:
   devise:
     sessions:
       customer:
-        signed_in: 'ログインを行ってください'
+        signed_in: 'ログインしました'
     failure:
       admin:
         invalid: '必須項目を入力してください。'
@@ -96,23 +96,3 @@ ja:
       create: 登録する
       submit: 保存する
       update: 更新する
-
-ja:
-  enums:
-    order_item:
-      making_status:
-        not_startable: "着手不可"
-        waiting_production: "製作待ち"
-        under_production: "製作中"
-        production_completed: "製作完了"
-
-
-ja:
-  enums:
-    order:
-      status:
-        waiting_payment: "入金待ち"
-        payment_confirmation: "入金確認"
-        under_production: "製作中"
-        ready_shipping: "発送準備中"
-        sented: "発送済み"
