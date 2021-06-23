@@ -29,10 +29,14 @@
         </div>
         <div class="mt-4">
           <% if customer_signed_in? %>
-            <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
-              <%= f.hidden_field :item_id, value: @item.id %>
-              <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
-              <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            <% if @item.is_active %>
+              <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.select :amount, options_for_select(1..10), include_blank: "個数を選択してください" %>
+                <%= f.submit "カートに入れる", class: "btn btn-success" %>
+              <% end %>
+            <% else %>
+              <h4 class="text-secondary pl-3">販売停止中</h4>
             <% end %>
           <% else %>
         </div>
