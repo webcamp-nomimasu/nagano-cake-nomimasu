@@ -17,11 +17,8 @@
               <% tax_price = cart_item.item.price * 1.1 %>
               <tr>
                 <td class="col-3">
-                  <%= attachment_image_tag cart_item.item, :image, size: "60x60", alt: "item-image", class: "rounded img-fluid" %>
+                  <%= attachment_image_tag cart_item.item, :image, alt: "item-image", class: "rounded img-fluid img-order" %>
                   <%= cart_item.item.name %></td>
-                <!--floor：小数点の切り捨て、:delimitedは3桁区切り-->
-                <!--<td class=""><%#= (cart.item.price * 1.1).floor.to_s(:delimited) %></td>-->
-                <!--tax_included_price：order.rbで定義-->
                 <td class="col-2">¥<%= tax_price.floor.to_s(:delimited) %></td>
                 <td class="col-1"><%= cart_item.amount %></td>
                 <td class="col-1">¥<%= (tax_price.floor*cart_item.amount).to_s(:delimited) %></td>
