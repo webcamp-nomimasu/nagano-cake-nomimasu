@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update] do
       resources :order_items, only: [:update]
     end
+    resources :contacts, only: [:index, :show]
   end
 
 end
