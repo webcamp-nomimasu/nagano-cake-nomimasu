@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <th>アレルギー表示</th>
-          <td colspan="2"><% %w(卵 牛乳 小麦 大豆).each.with_index do |allergy,i| %>
+          <td colspan="2"><% %w(卵 牛乳 小麦 大豆 なし).each.with_index do |allergy,i| %>
                           <label>
                           <%= check_box_tag 'item[allergies][]', allergy, false, id: "item_allergies_#{i}" %>
                           <%= allergy %>

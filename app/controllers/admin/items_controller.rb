@@ -38,12 +38,14 @@ class Admin::ItemsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :allergies)
+  def allergy_string
+    if params[:item][:allergies].present?
+      params[:item][:allergies] = params[:item][:allergies].join(" ")
+    end
   end
 
-  def allergy_string
-    params[:item][:allergies] = params[:item][:allergies].join(" ")
+  def item_params
+    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :allergies)
   end
 
 end
