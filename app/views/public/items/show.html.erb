@@ -7,7 +7,7 @@
     </div>
     <div class="row justify-content-center mt-5">
       <div class="col-md-6 text-center">
-        <%= attachment_image_tag @item, :image, format: "jpeg", fallback: "no_image.jpg", class: "img-fluid item-show" %>
+        <%= attachment_image_tag @item, :image, format: "jpeg", size: "400x300", fallback: "no_image.jpg", class: "img-fluid" %>
       </div>
       <div class="row col-md-6">
         <div class="col-10">

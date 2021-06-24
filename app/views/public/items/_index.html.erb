@@ -2,7 +2,7 @@
   <div class="card-deck text-center d-inline-flex">
     <div class="card border-0">
       <div class="card-img-top">
-        <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", fallback: "no_image.jpg", class: "rounded image-order"), item_path(item.id) %>
+        <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", fallback: "no_image.jpg", class: "rounded"), item_path(item.id) %>
       </div>
       <div class="card-body">
         <p class="card-title">

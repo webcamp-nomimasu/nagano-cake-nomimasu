@@ -10,9 +10,9 @@
     <% else %>
     <td class="text-secondary align-middle text-center">販売停止中</td>
     <% end %>
-    <td>
+    <td class="text-secondary align-middle text-center">
       <%= link_to item_comments_path(item) do%>
-        <%= item.comments.count %>
+        <%= item.comments.count %>件
       <% end %>
     </td>
   </tr>
