@@ -44,6 +44,8 @@
               <h5>お届け先</h5>
                 〒<%= @order.postal_code %>　<%= @order.address %>　<%= @order.name %>
         </br></br>
+            <div class="d-flex justify-content-center mx-auto">
+              <%= link_to "情報入力に戻る", new_order_path(@oeder), class: "btn btn-lg btn-primary" %>&emsp;&emsp;
               <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
                 <%= f.hidden_field :postal_code %>
                 <%= f.hidden_field :address %>
@@ -51,10 +53,9 @@
                 <%= f.hidden_field :payment_method %>
                 <%= f.hidden_field :total_price, :value => (@sum + @shipping_cost) %>
                 <%= f.hidden_field :shipping_cost %>
-                <div class="d-flex justify-content-center mx-auto">
-                  <%= f.submit "注文を確定する", class: "btn btn-lg btn-success" %>
-                </div>
+                <%= f.submit "注文を確定する", class: "btn btn-lg btn-success" %>
               <% end %>
+            </div>
       </div>
     </div>
   </div>
