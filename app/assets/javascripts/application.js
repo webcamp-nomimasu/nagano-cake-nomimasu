@@ -31,6 +31,8 @@ $(window).on('load',function(){
 
 });
 
+
+// 管理者ログインリンク
 $(window).keydown(function (e1) {
   console.log(e1);
   if (e1.keyCode == 89) {

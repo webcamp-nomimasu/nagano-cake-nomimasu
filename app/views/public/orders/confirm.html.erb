@@ -17,7 +17,7 @@
               <% tax_price = cart_item.item.price * 1.1 %>
               <tr>
                 <td class="col-3">
-                  <%= attachment_image_tag cart_item.item, :image, size: "60x60", alt: "item-image", class: "rounded img-fluid" %>
+                  <%= attachment_image_tag cart_item.item, :image, size: "60x60", fallback: "no_image.jpg", alt: "item-image", class: "rounded img-fluid" %>
                   <%= cart_item.item.name %></td>
                 <!--floor：小数点の切り捨て、:delimitedは3桁区切り-->
                 <!--<td class=""><%#= (cart.item.price * 1.1).floor.to_s(:delimited) %></td>-->

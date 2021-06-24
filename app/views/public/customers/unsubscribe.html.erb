@@ -3,15 +3,15 @@
     <!--<div class="col">-->
       <div class="mb-3">
         <h5>本当に退会しますか？</h5>
-        
+
         退会すると、会員情報や</br>
         これまでの購入履歴が閲覧できなくなります。</br>
         退会する場合は、「退会する」をクリックしてください。</br>
       </div>
-      
-      
-      <%= link_to "退会しない", edit_customers_path, class: "btn btn-success mr-3" %>
-      <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-danger" %>
+
+
+      <%= link_to "退会しない", customer_path(current_customer), class: "btn btn-outline-success mr-3" %>
+      <%= link_to "退会する", customers_withdraw_path, method: :patch, class: "btn btn-outline-danger" %>
     <!--</div>-->
   </div>
 </div>
