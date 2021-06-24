@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
   end
 
-  devise_for :customers
+  devise_for :customers, controllers: { registrations: 'public/customers/registrations' }
 
   # ========= 管理者(admin)のルーティング ================
   devise_for :admins, controllers: {

@@ -42,19 +42,24 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.status = 0
-    @order.save
     @cart_items = current_customer.cart_items.all
-    @cart_items.each do |cart_item|
-      @order_item = OrderItem.new
-      @order_item.item_id = cart_item.item.id
-      @order_item.order_id = @order.id
-      @order_item.price = cart_item.item.price * tax
-      @order_item.amount = cart_item.amount
-      @order_item.making_status = 0
-      @order_item.save!
-      current_customer.cart_items.destroy_all
+    if @cart_items.blank?
+      flash[:alert] = "注文は確定しています"
+      redirect_to root_path
+    else
+      @order.save
+      @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.item_id = cart_item.item.id
+        @order_item.order_id = @order.id
+        @order_item.price = cart_item.item.price * tax
+        @order_item.amount = cart_item.amount
+        @order_item.making_status = 0
+        @order_item.save!
+        current_customer.cart_items.destroy_all
+      end
+      redirect_to orders_complete_path
     end
-    redirect_to orders_complete_path
   end
 
   def index

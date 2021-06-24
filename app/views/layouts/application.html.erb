@@ -14,35 +14,37 @@
     <div id="js-loader" class="loader"></div>
 
     <header class="sticky-top">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <%= link_to image_tag('logo-clear.png', :size =>'200x50', class: "navbar-brand img-fluid"), root_path %>
-
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <!--<div class="container">-->
+          <%= link_to image_tag('logo1.png', :size =>'200x50', class: "navbar-brand img-fluid"), root_path %>
+          <button class="navbar-toggler justify-content-end pt-2 border border-secondary border-5 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon navbar-light"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to customer_path do %>
                   <div class="wave fas fa-home nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">マ</span><span class="nav-link text-dark px-0" style="font-size: 15px">イ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ぺ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ー</span><span class="nav-link text-dark px-0" style="font-size: 15px">ジ</span>
                     </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to items_path do %>
                   <div class="wave fas fa-store nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">商</span><span class="nav-link text-dark px-0" style="font-size: 15px">品</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to cart_items_path do %>
                   <div class="wave fas fa-shopping-cart nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">カ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ー</span><span class="nav-link text-dark px-0" style="font-size: 15px">ト</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to destroy_customer_session_path, method: :delete do %>
                   <div class="wave fas fa-sign-out-alt nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">ロ</span><span class="nav-link text-dark px-0" style="font-size: 15px">グ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ア</span><span class="nav-link text-dark px-0" style="font-size: 15px">ウ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ト</span>
@@ -50,35 +52,35 @@
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to admin_items_path do %>
                   <div class="wave fas fa-store nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">商</span><span class="nav-link text-dark px-0" style="font-size: 15px">品</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to admin_customers_path do %>
                   <div class="wave fas fa-users nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">会</span><span class="nav-link text-dark px-0" style="font-size: 15px">員</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to admin_top_path do %>
                   <div class="wave fas fa-book-open nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">注</span><span class="nav-link text-dark px-0" style="font-size: 15px">文</span><span class="nav-link text-dark px-0" style="font-size: 15px">履</span><span class="nav-link text-dark px-0" style="font-size: 15px">歴</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to admin_genres_path do %>
                   <div class="wave fas fa-list-ul nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">ジ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ャ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ン</span><span class="nav-link text-dark px-0" style="font-size: 15px">ル</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to destroy_admin_session_path, method: :delete do %>
                   <div class="wave fas fa-sign-out-alt nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">ロ</span><span class="nav-link text-dark px-0" style="font-size: 15px">グ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ア</span><span class="nav-link text-dark px-0" style="font-size: 15px">ウ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ト</span>
@@ -86,28 +88,28 @@
                   <% end %>
                 </li>
               <% else %>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to about_path do %>
                   <div class="wave fas fa-link nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">A</span><span class="nav-link text-dark px-0" style="font-size: 15px">B</span><span class="nav-link text-dark px-0" style="font-size: 15px">O</span><span class="nav-link text-dark px-0" style="font-size: 15px">U</span><span class="nav-link text-dark px-0" style="font-size: 15px">T</span>
                     </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to items_path do %>
                   <div class="wave fas fa-store nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">商</span><span class="nav-link text-dark px-0" style="font-size: 15px">品</span><span class="nav-link text-dark px-0" style="font-size: 15px">一</span><span class="nav-link text-dark px-0" style="font-size: 15px">覧</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to new_customer_registration_path do %>
                   <div class="wave fas fa-user-plus nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">新</span><span class="nav-link text-dark px-0" style="font-size: 15px">規</span><span class="nav-link text-dark px-0" style="font-size: 15px">登</span><span class="nav-link text-dark px-0" style="font-size: 15px">録</span>
                   </div>
                   <% end %>
                 </li>
-                <li>
+                <li class="d-flex justify-content-end">
                   <%= link_to new_customer_session_path do %>
                   <div class="wave fas fa-sign-in-alt nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">ロ</span><span class="nav-link text-dark px-0" style="font-size: 15px">グ</span><span class="nav-link text-dark px-0" style="font-size: 15px">イ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ン</span>
@@ -117,7 +119,7 @@
               <% end %>
             </ul>
           </div>
-        </div>
+        <!--</div>-->
       </nav>
     </header>
 

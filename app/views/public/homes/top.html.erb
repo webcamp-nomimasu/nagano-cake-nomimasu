@@ -13,7 +13,10 @@
       購⼊には会員登録が必要になります。<br>
       </p>
     </div>
-    <div class="col-lg-10 offset-md-1 mt-4">
+    <div class="col-lg-10 offset-md-1 mt-3">
+      <div class="mb-3">
+        <%= render "public/items/search", genres: @genres, genre: @genre %>
+      </div>
       <h3 class="mb-3">
         新着商品
       </h3>
@@ -25,7 +28,7 @@
           <div class="card-deck text-center d-inline-flex mt-3">
             <div class="card border-0">
               <div class="card-img-top">
-                <%= link_to attachment_image_tag(item, :image, format: "jpeg", class: "rounded img-top" ), item_path(item.id) %>
+                <%= link_to attachment_image_tag(item, :image, format: "jpeg", fallback: "no_image.jpg", class: "rounded image-top"), item_path(item.id) %>
               </div>
               <div class="card-body">
                 <p class="card-title">

@@ -17,7 +17,7 @@
               <% tax_price = cart_item.item.price * 1.1 %>
               <tr>
                 <td class="col-3">
-                  <%= attachment_image_tag cart_item.item, :image, alt: "item-image", class: "rounded img-fluid img-order" %>
+                  <%= attachment_image_tag cart_item.item, :image, alt: "item-image", fallback: "no_image.jpg", class: "rounded img-fluid img-order" %>
                   <%= cart_item.item.name %></td>
                 <td class="col-2">¥<%= tax_price.floor.to_s(:delimited) %></td>
                 <td class="col-1"><%= cart_item.amount %></td>
