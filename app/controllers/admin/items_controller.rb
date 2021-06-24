@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :allergy_string, only: [:create, :update]
-  
+
   def index
     @items = Item.page(params[:page]).per(10).reverse_order
   end
@@ -37,12 +37,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   private
-  
-  def allergy_string
-    params[:item][:allergies] = params[:item][:allergies].join(" ")
-  end
 
   def item_params
     params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :allergies)
   end
+
+  def allergy_string
+    params[:item][:allergies] = params[:item][:allergies].join(" ")
+  end
+
 end
