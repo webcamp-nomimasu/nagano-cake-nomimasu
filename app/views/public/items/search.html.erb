@@ -35,8 +35,10 @@
             <% end %>
           </div>
       <% else %>
-         <%= render "index", items: @items, items_count: @items_count %>
-         <div class="d-flex justify-content-center mx-auto mt-3"><%= paginate(@items) %></div>
+        <div class="items-list text-center">
+          <%= render "index", items: @items, items_count: @items_count %>
+        </div>
+        <div class="d-flex justify-content-center mx-auto mt-3"><%= paginate(@items) %></div>
       <% end %>
     </div>
   </div>
