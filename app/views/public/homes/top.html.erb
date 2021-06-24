@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-lg-12">
-      
+
       <div id="admin-link" style="display: none;">
         <%= link_to "管理者ログイン", "/admins/sign_in", class: "d-flex justify-content-start" %>
       </div>
@@ -28,7 +28,7 @@
           <div class="card-deck text-center d-inline-flex mt-3">
             <div class="card border-0">
               <div class="card-img-top">
-                <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", fallback: "no_image.jpg", class: "rounded"), item_path(item.id) %>
+                 <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", fallback: "no_image.jpg", class: "rounded"), item_path(item.id) %>
               </div>
               <div class="card-body">
                 <p class="card-title">
