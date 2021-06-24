@@ -22,7 +22,7 @@
 
   <div class="row">
     <div class="col-md-6">
-      <table class="table table-hover">
+      <table class="table table-hover table-inverse">
         <thead>
           <tr align="center">
             <th style="width: 50%">ジャンル</th>
@@ -33,9 +33,9 @@
           <% @genres.each do |genre| %>
             <tr align="center">
               <td><%= genre.name %></td>
-              <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+              <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "text-secondary" %></td>
               <!--追加-->
-              <td><%= link_to "削除する", admin_destroy_path(genre.id), class:"btn btn-danger destroy", method: :delete,data: {confirm: "本当に消しますか？"} %></td>
+              <td><%= link_to "削除する", admin_destroy_path(genre.id), class:"text-danger destroy", method: :delete,data: {confirm: "本当に消しますか？"} %></td>
             </tr>
           <% end %>
         </tbody>

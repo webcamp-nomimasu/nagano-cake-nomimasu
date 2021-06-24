@@ -18,7 +18,7 @@
                 <%= customer.id %>
               </td>
               <td>
-                <%= link_to admin_customer_path(customer), class: "btn-link text-dark" do %>
+                <%= link_to admin_customer_path(customer) do %>
                   <%= customer.family_name %>
                   <%= customer.given_name %>
                 <% end %>
