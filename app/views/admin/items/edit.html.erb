@@ -28,13 +28,14 @@
           <td colspan="2"><%= f.collection_select :genre_id, Genre.all, :id, :name, prompt: "--選択してください--", size: "30", class: "form-control" %></td>
         </tr>
         <tr>
-          <th>アレルギー</th>
-          <td colspan="2"><% %w(卵 牛乳 小麦 大豆).each.with_index do |allergy,i| %>
+          <th>アレルギー表示</th>
+          <td colspan="2"><% %w(卵 牛乳 小麦 大豆 なし).each.with_index do |allergy,i| %>
                           <label>
-                          <%= check_box_tag 'item[allergies][]', allergy, id: "item_allergies_#{i}" %>
+                          <%= check_box_tag 'item[allergies][]', allergy, false, id: "item_allergies_#{i}" %>
                           <%= allergy %>
                           </label>
-                          <% end %></td>
+                          <% end %>
+                          <div class="allergy-update">※変更時のみ入力</div></td>
         </tr>
         <tr>
           <th>税抜価格</th>

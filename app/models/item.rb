@@ -8,4 +8,5 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
+  validates :allergies, presence: true
 end

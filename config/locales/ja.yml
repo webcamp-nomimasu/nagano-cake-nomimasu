@@ -18,6 +18,7 @@ ja:
       cart_item: 'カート内商品'
       order: '注文'
       order_item: '注文商品'
+      allergies: 'アレルギー表示'
 
     errors:
       messages:
@@ -52,6 +53,7 @@ ja:
         genre_id: ジャンル
         image: 画像
         image_id: 画像
+        allergies: アレルギー表示
       genre:
         name: ジャンル名
       cart_item:

@@ -8,7 +8,11 @@
   <%= form_with model: [:admin, @item], local:true do |f| %>
     <div class="row d-block justify-content-center">
       <div class="col-md-6 mx-auto">
-        <%= render 'layouts/error', obj: @item %>
+        <% if @item.allergies.blank? %>
+          <%= render 'layouts/error', obj: @item %>
+        <% else %>
+          <%= render 'error', obj: @item %>
+        <% end %>
       </div>
       <table class="table table-borderless col-md-6 mx-auto">
         <tr>
@@ -29,7 +33,7 @@
         </tr>
         <tr>
           <th>アレルギー表示</th>
-          <td colspan="2"><% %w(卵 牛乳 小麦 大豆).each.with_index do |allergy,i| %>
+          <td colspan="2"><% %w(卵 牛乳 小麦 大豆 なし).each.with_index do |allergy,i| %>
                           <label>
                           <%= check_box_tag 'item[allergies][]', allergy, false, id: "item_allergies_#{i}" %>
                           <%= allergy %>
