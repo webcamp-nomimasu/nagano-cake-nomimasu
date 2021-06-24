@@ -10,8 +10,9 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_path
     else
-      redirect_to addresses_path  # render?
-      flash[:alert] = "すべて入力してください。"
+      flash.now[:alert] = "すべて入力してください。"
+      @addresses = current_customer.addresses.all
+      render :index
     end
   end
 
