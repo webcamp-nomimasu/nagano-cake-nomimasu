@@ -42,7 +42,7 @@
           <div class="form-group">
             <%= f.label "郵便番号(ハイフンなし)", class: "col-4 mt-2" %>
             <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000", class: "form-control-sm col-3" %>
-            <% if @customer.errors.include?(:family_name) %>
+            <% if @customer.errors.include?(:postal_code) %>
               <p style="color: red;"><%= @customer.errors.full_messages_for(:postal_code).first %>
             <% end %>
           </div>
