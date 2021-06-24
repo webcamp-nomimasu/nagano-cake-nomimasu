@@ -1,5 +1,5 @@
 class Public::OrdersController < ApplicationController
-  before_action :authenticate_customer!, except: [:show, :index]
+  before_action :authenticate_customer!
 
   def new
     @order = Order.new
@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
 
   def create
     tax = 1.1
-    
+
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.status = 0
@@ -70,9 +70,6 @@ class Public::OrdersController < ApplicationController
     @shipping_cost = 800
     @order = Order.find(params[:id])
     @order_items = @order.order_items
-    if (@order.customer != current_customer) && @order.blank?
-      redirect_to root_path
-    end
   end
 
   private
