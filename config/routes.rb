@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top', as: 'top'
+    get 'search' => 'search#search', as: 'search'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     # ジャンル削除機能追加しました
