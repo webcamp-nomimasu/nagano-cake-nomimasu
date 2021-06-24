@@ -35,7 +35,7 @@ class Admin::ItemsController < ApplicationController
       render 'edit'
     end
   end
-
+  
   private
 
   def allergy_string
@@ -45,7 +45,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active, :allergies)
+    params.require(:item).permit(:image, :name, :information, :genre_id, :price, :is_active)
   end
 
 end
