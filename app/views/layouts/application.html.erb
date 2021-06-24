@@ -83,6 +83,13 @@
                   <% end %>
                 </li>
                 <li>
+                  <%= link_to admin_contacts_path do %>
+                  <div class="wave fas fa-question-circle nav-link text-dark">
+                    <span class="nav-link text-dark px-0" style="font-size: 15px">お</span><span class="nav-link text-dark px-0" style="font-size: 15px">問</span><span class="nav-link text-dark px-0" style="font-size: 15px">い</span><span class="nav-link text-dark px-0" style="font-size: 15px">合</span><span class="nav-link text-dark px-0" style="font-size: 15px">わ</span><span class="nav-link text-dark px-0" style="font-size: 15px">せ</span>
+                  </div>
+                  <% end %>
+                </li>
+                <li>
                   <%= link_to destroy_admin_session_path, method: :delete do %>
                   <div class="wave fas fa-sign-out-alt nav-link text-dark">
                     <span class="nav-link text-dark px-0" style="font-size: 15px">ロ</span><span class="nav-link text-dark px-0" style="font-size: 15px">グ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ア</span><span class="nav-link text-dark px-0" style="font-size: 15px">ウ</span><span class="nav-link text-dark px-0" style="font-size: 15px">ト</span>
@@ -140,8 +147,10 @@
 
     <div class="main">
       <%= yield %>
+      <% unless admin_signed_in? %>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
       <div id="page-contact"><a href="/contacts/new"></a></div>
+      <% end %>
     </div>
 
     <footer class="fixed-bottom">
