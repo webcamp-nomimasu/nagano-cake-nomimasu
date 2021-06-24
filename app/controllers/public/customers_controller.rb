@@ -25,6 +25,7 @@ class Public::CustomersController < ApplicationController
     current_customer.update(is_deleted: true)
     reset_session
     redirect_to root_path
+    flash[:notice] = "ご利用ありがとうございました。"
   end
 
 
