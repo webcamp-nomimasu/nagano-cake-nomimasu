@@ -14,7 +14,6 @@
 
     <header class="sticky-top">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <!--<div class="container">-->
           <%= link_to image_tag('logo1.png', :size =>'200x50', class: "navbar-brand img-fluid"), root_path %>
           <button class="navbar-toggler justify-content-end pt-2 border border-secondary border-5 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-light"></span>
@@ -117,11 +116,18 @@
                 </li>
               <% end %>
             </ul>
-          </div>
-        <!--</div>-->
+        </div>
       </nav>
+    <% if admin_signed_in? %>
+    <div class="col mr-5 d-flex justify-content-end">
+      <%= form_with url:admin_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field 'search[value]' %>
+        <%= f.select 'search[model]', options_for_select({ "会員" => "customer", "商品" => "item" }) %>
+        <%= f.submit :"検索", class: "btn btn-success" %>
+      <% end %>
+      </div>
+    <% end %>
     </header>
-
     <div class="col-lg-10 mx-auto">
       <% if flash[:notice] %>
       <div class="alert alert-info">
@@ -135,6 +141,7 @@
       <% end %>
     </div>
 
+    
     <div class="main">
       <%= yield %>
     </div>
