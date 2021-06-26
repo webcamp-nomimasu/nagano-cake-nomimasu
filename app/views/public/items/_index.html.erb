@@ -1,0 +1,25 @@
+<% items.each do |item| %>
+  <div class="card-deck text-center col-sm-6 col-md-6 col-lg-3 d-inline-flex">
+    <div class="card border-0">
+      <div class="card-img-top">
+        <%= link_to attachment_image_tag(item, :image, format: "jpeg", size: "200x124", fallback: "no_image.jpg", class: "rounded"), item_path(item.id) %>
+      </div>
+      <div class="card-body">
+        <p class="card-title">
+          <%= item.name %>
+        </p>
+        <!--販売ステータスで表記を変える-->
+        <% if item.is_active == true %>
+          <p class="card-text">
+            ¥<%= (item.price * 1.1).floor.to_s(:delimited) %>
+            <!--:delimited で三桁区切り-->
+          </p>
+        <% else %>
+          <p class="card-text">
+            売り切れ中
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

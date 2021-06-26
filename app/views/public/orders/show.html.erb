@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col mt-3">
+      <h2>注文履歴詳細</h2>
+        <div class="box-confirm mt-3">
+          <div class="col-6 d-block">
+            <h5>注文情報</h5>
+            <table class="table-bordered">
+              <thead>
+                <tr align="center">
+                  <th class="table-active align-middle" style="width: 25%">注文日</th>
+                  <th class="table-active align-middle" style="width: 30%">配送先</th>
+                  <th class="table-active align-middle" style="width: 25%">支払方法</th>
+                  <th class="table-active align-middle" style="width: 20%">ステータス</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr align="center">
+                  <td class="align-middle"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+                  <td class="align-middle">〒<%= @order.postal_code %></br><%= @order.address %></br><%= @order.name %></td>
+                  <td class="align-middle"><%= @order.payment_method %></td>
+                  <td class="align-middle"><%= @order.status %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-6 d-block">
+            <h5>請求情報</h5>
+            <table class="table-bordered" style="width: 100%">
+              <thead>
+                <tr align="center">
+                  <th class="table-active align-middle" style="width: 30%">商品合計</th>
+                  <th class="table-active align-middle" style="width: 20%">配送料</th>
+                  <th class="table-active align-middle" style="width: 50%">ご請求額</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr align="center">
+                  <td class="align-middle">¥<%= (@order.total_price - @shipping_cost).to_s(:delimited) %></td>
+                  <td class="align-middle">¥<%= @shipping_cost.to_s(:delimited) %></td>
+                  <td class="align-middle">¥<%= @order.total_price.to_s(:delimited) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mt-5 col-md-10">
+          <h5>注文内容</h5>
+          <table class="table-bordered" style="width: 100%">
+            <thead>
+              <tr align="center">
+                <th class="table-active align-middle" style="width: 30%">商品</th>
+                <th class="table-active align-middle" style="width: 15%">単価(税込)</th>
+                <th class="table-active align-middle" style="width: 10%">個数</th>
+                <th class="table-active align-middle" style="width: 20%">小計</th>
+                <th class="table-active align-middle" style="width: 25%">カートに入れる　レビュー</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @order_items.each do |order_item| %>
+                <tr align="center">
+                  <td class="align-middle"><%= order_item.item.name %></td>
+                  <td class="align-middle">¥<%= order_item.price.floor.to_s(:delimited) %></td>
+                  <td class="align-middle"><%= order_item.amount %></td>
+                  <td class="align-middle"><%= (order_item.price * order_item.amount).floor.to_s(:delimited) %></td>
+                  <td class="align-middle">
+                    <%= link_to item_path(order_item.item), class: "text-dark" do %>
+                      <i class="fas fa-shopping-cart"></i>
+                    <% end %>&nbsp;&emsp;&emsp;|&emsp;&emsp;&nbsp;
+                    <%= link_to item_comments_path(order_item.item), class: "text-dark" do %>
+                      <i class="far fa-comments"></i>
+                    <% end %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-center mx-auto mt-5">
+          <%= link_to "トップページへ戻る", root_path, class: "btn btn-success mx-auto col-3" %>
+        </div>
+     </div>
+  </div>
+</div>

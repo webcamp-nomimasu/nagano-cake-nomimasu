@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row col-md-12 mx-auto">
+    <div class="mt-3 mb-3">
+      <div>
+        <%= render "search", genres: @genres, genre: @genre %>
+      </div>
+      <div class="items-list text-center">
+        <%= render "index", items: @items, items_count: @items_count %>
+      </div>
+    </div>
+    <div class="text-center mx-auto"><%= paginate(@items) %></div>
+  </div>
+</div>

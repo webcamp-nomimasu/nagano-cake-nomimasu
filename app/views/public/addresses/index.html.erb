@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="mx-auto mt-3 col-md-10 offset-1">
+      <h3>配送先登録</h3>
+    </div>
+  <div class="row  col-md-10 offset-1">
+    <!--新規登録フォーム-->
+    <div class="col-md-10 form-row address-new">
+      <%= form_with model: @address, local: true do |f| %>
+        <div class="form-group">
+          <label for="郵便番号", class="d-block">郵便番号(ハイフンなし)</label>
+          <%= f.text_field :postal_code, autofocus: true, placeholder: "0000000" %>
+        </div>
+        <div class="form-group">
+          <label for="住所", class="d-block">住所</label>
+          <%= f.text_field :address, size: 40, placeholder: "東京都渋谷区代々木神園町0-0" %>
+        </div>
+        <div class="form-group">
+          <label for="宛名", class="d-block">宛名</label>
+          <%= f.text_field :name, placeholder: "令和道子" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+
+    <!--一覧-->
+    <div class="adresses-index col-md-10">
+      <% if @addresses.empty? %>
+        <h5>登録された配送先はありません</h5>
+      <% else %>
+        <div class="col mx-auto mt-3">
+          <h3>配送先一覧</h3>
+        </div>
+        <table class="tabel table-bordered" style="width: 100%;">
+          <thead>
+            <tr>
+              <th style="width: 15%;">郵便番号</th>
+              <th style="width: 35%;">住所</th>
+              <th style="width: 20%;">宛名</th>
+              <th style="width: 30%;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @addresses.each do |address| %>
+              <tr>
+                <td><%= address.postal_code %></td>
+                <td><%= address.address %></td>
+                <td><%= address.name %></td>
+                <td class="text-center mx-0">
+                  <%= link_to "編集する", edit_address_path(address), class: "btn btn-success" %>
+                  <%= link_to "削除する", address_path(address), method: :delete, data:{ confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

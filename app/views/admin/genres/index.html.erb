@@ -1,0 +1,45 @@
+<% if @genre.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="container">
+  <div class="row mt-3 mb-3">
+    <div class="col-md-6">
+      <h3 class="mb-4">ジャンル一覧・追加</h3>
+      <%= form_with model:@genre,url: admin_genres_path, local: true, class: "form-inline" do |f| %>
+        <%= f.label :name, "ジャンル", class: "mb-2 mr-sm-2 " %>
+        <%= f.text_field :name, placeholder: "ジャンル名", class: "form-control mb-2 mr-2"%>
+        <%= f.submit '新規登録', class:"btn btn-success mb-2" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr align="center">
+            <th style="width: 50%">ジャンル</th>
+            <th colspan="2"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr align="center">
+              <td><%= genre.name %></td>
+              <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "text-secondary" %></td>
+              <!--追加-->
+              <td><%= link_to "削除する", admin_destroy_path(genre.id), class:"text-danger destroy", method: :delete,data: {confirm: "本当に消しますか？"} %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

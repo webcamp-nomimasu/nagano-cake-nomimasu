@@ -1,0 +1,19 @@
+<% items.each do |item| %>
+  <tr>
+    <td class="align-middle text-center"><%= item.id %></td>
+    <td class="align-middle text-center"><%= link_to item.name, admin_item_path(item) %></td>
+    <td class="align-middle text-center"><%= item.price.to_s(:delimited) %></td>
+    <td class="align-middle text-center"><%= item.genre.name %></td>
+    <td class="align-middle text-center"><%= item.allergies %></td>
+    <% if item.is_active %>
+    <td class="text-success align-middle text-center">販売中</td>
+    <% else %>
+    <td class="text-secondary align-middle text-center">販売停止中</td>
+    <% end %>
+    <td class="text-secondary align-middle text-center">
+      <%= link_to item_comments_path(item) do%>
+        <%= item.comments.count %>件
+      <% end %>
+    </td>
+  </tr>
+<% end %>

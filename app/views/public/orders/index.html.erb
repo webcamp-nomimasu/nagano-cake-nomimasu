@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row mt-3 mx-auto">
+    <div class="col">
+      <h2>注文履歴一覧</h2>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr align="center">
+            <th style="width: 15%">注文日</th>
+            <th style="width: 30%">配送先</th>
+            <th style="width: 15%">注文商品</th>
+            <th style="width: 10%">支払金額</th>
+            <th style="width: 15%">ステータス</th>
+            <th style="width: 15%">注文詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr align="center">
+              <td class="align-middle"><%= order.created_at.strftime("%Y/%m/%d") %></td>
+              <!--floor：小数点の切り捨て、:delimitedは3桁区切り-->
+              <!--<td class=""><%#= (cart.item.price * 1.1).floor.to_s(:delimited) %></td>-->
+              <!--tax_included_price：order.rbで定義-->
+              <td class="align-middle"><%= order.postal_code %></br><%= order.address %></br><%= order.name %></td>
+              <td class="align-middle">
+                <% order.order_items.each do |order_item| %>
+                  <%= order_item.item.name %><br />
+                <% end %></td>
+              <td class="align-middle">¥<%= order.total_price.to_s(:delimited) %></td>
+              <td class="align-middle"><%= order.status %></td>
+              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+$("#comment_form").html("<%= j(render partial: 'public/comments/comment_list', locals: {item: @item, comment: @comment}) %>");
+$("textarea").val('');
