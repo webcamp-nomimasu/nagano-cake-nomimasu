@@ -7,8 +7,6 @@
 ## ER図
 ![ノミマス？_nagano_cake.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723565/_nagano_cake.pdf)
 
-[_nagano_cake.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723666/_nagano_cake.pdf)
-
 ## アプリケーション設計書
 ![nagano_cake_application_design.xlsx.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723631/nagano_cake_application_design.xlsx.pdf)
 
