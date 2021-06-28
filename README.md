@@ -5,4 +5,4 @@
 - Rails version 5.2.5
 
 ## ER図
-[ノミマス？_nagano_cake.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723565/_nagano_cake.pdf)
+![ノミマス？_nagano_cake.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723565/_nagano_cake.pdf)
