@@ -1,3 +1,5 @@
 ## DWC チーム開発 NaganoCake チームE nomimasu のリポジトリです
-## Ruby version
-## Ruby on Rails version
+
+## バージョン
+- Ruby version 2.
+- Rails version 5.2.5
