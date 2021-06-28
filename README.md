@@ -8,3 +8,8 @@
 ![ノミマス？_nagano_cake.pdf](https://github.com/webcamp-nomimasu/nagano-cake-nomimasu/files/6723565/_nagano_cake.pdf)
 
 ## テーブル定義書
+
+
+##管理者ログイン
+- メールアドレス nomi@masu
+- パスワード 111111
