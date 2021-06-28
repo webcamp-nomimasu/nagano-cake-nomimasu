@@ -1,4 +1,4 @@
-## DWC チーム開発 NaganoCake チームE nomimasu のリポジトリです
+# DWC チーム開発 NaganoCake チームE nomimasu のリポジトリです
 
 ## バージョン
 - Ruby version 2.6.3
